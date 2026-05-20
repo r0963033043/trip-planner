@@ -709,7 +709,10 @@
 
   langSel.addEventListener("change", () => {
     lang = langSel.value;
-    Promise.all([loadI18n(), loadLocations(), loadHubs()]);
+    loadI18n().then(() => {
+      loadLocations();
+      loadHubs();
+    });
   });
 
   form.addEventListener("submit", e => {
@@ -752,12 +755,12 @@
   });
 
   loadI18n().then(() => {
+    loadLocations();
+    loadHubs();
     addEntry("transport");
     addEntry("stay");
     addEntry("spot");
   });
-  loadLocations();
-  loadHubs();
 </script>
 
 </body>
