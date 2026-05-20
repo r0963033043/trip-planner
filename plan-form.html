@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Trip Plan Form</title>
+<style>
+  :root {
+    --bg: #f6f7fb;
+    --card: #ffffff;
+    --border: #d9dde6;
+    --accent: #2f6feb;
+    --accent-hover: #1f56c7;
+    --muted: #6b7280;
+    --danger: #c0392b;
+    --radius: 8px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: #1f2937;
+    margin: 0;
+    padding: 32px 16px;
+  }
+  form {
+    max-width: 880px;
+    margin: 0 auto;
+    background: var(--card);
+    padding: 28px 32px;
+    border-radius: var(--radius);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+  .lang-picker { display: flex; align-items: center; gap: 6px; font-size: 0.85rem; color: var(--muted); }
+  .lang-picker select { width: auto; padding: 4px 8px; }
+  h1 { margin: 0; }
+  h2 {
+    margin-top: 28px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--border);
+    font-size: 1.15rem;
+  }
+  label {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  input, select {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font: inherit;
+    background: #fff;
+  }
+  select[multiple] { min-height: 120px; }
+  .row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .entry {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    margin-bottom: 12px;
+    background: #fafbfd;
+    position: relative;
+  }
+  .entry-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  .entry-head strong { font-size: 0.95rem; }
+  .entry-head-left { display: flex; align-items: center; gap: 8px; }
+  .drag-handle {
+    cursor: grab;
+    color: var(--muted);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: bold;
+    user-select: none;
+    letter-spacing: -2px;
+  }
+  .drag-handle:hover { background: #eef1f6; color: #1f2937; }
+  .drag-handle:active { cursor: grabbing; }
+  .entry.dragging { opacity: 0.4; }
+  button {
+    font: inherit;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 14px;
+    cursor: pointer;
+  }
+  .btn-add {
+    background: var(--accent);
+    color: #fff;
+  }
+  .btn-add:hover { background: var(--accent-hover); }
+  .btn-remove {
+    background: transparent;
+    color: var(--danger);
+    padding: 4px 8px;
+    font-size: 0.85rem;
+  }
+  .btn-remove:hover { text-decoration: underline; }
+  .actions {
+    margin-top: 24px;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+  }
+  .btn-submit {
+    background: #16a34a;
+    color: #fff;
+    padding: 10px 20px;
+    font-weight: 600;
+  }
+  .btn-submit:hover { background: #128a3d; }
+  .hint { font-size: 0.8rem; color: var(--muted); margin-top: 4px; }
+  output {
+    display: block;
+    margin-top: 16px;
+    padding: 12px;
+    background: #f1f5f9;
+    border-radius: 6px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.85rem;
+    white-space: pre-wrap;
+  }
+</style>
+</head>
+<body>
+
+<form id="trip-form">
+  <div class="top-bar">
+    <h1 data-i18n="title">Plan a Trip</h1>
+    <div class="lang-picker">
+      <label for="lang" data-i18n="language" style="margin:0">Language</label>
+      <select id="lang">
+        <option value="en">English</option>
+        <option value="zh">繁體中文</option>
+      </select>
+    </div>
+  </div>
+
+  <h2 data-i18n="destination">Destination</h2>
+  <div class="row">
+    <div>
+      <label for="country" data-i18n="country">Country (multi)</label>
+      <select id="country" name="country" multiple required></select>
+      <div class="hint" data-i18n="hint_multi">Hold Ctrl/Cmd to select multiple</div>
+    </div>
+    <div>
+      <label for="city" data-i18n="city">City (multi)</label>
+      <select id="city" name="city" multiple required></select>
+      <div class="hint" data-i18n="hint_filter">Filtered by selected countries</div>
+    </div>
+  </div>
+
+  <h2><span data-i18n="transportation">Transportation</span>
+    <button type="button" class="btn-add" data-add="transport" data-i18n="add" style="float:right;font-size:0.85rem;padding:4px 10px;">+ Add</button>
+  </h2>
+  <div id="transport-list"></div>
+
+  <h2><span data-i18n="stay">Stay</span>
+    <button type="button" class="btn-add" data-add="stay" data-i18n="add" style="float:right;font-size:0.85rem;padding:4px 10px;">+ Add</button>
+  </h2>
+  <div id="stay-list"></div>
+
+  <h2><span data-i18n="spot">Spot</span>
+    <button type="button" class="btn-add" data-add="spot" data-i18n="add" style="float:right;font-size:0.85rem;padding:4px 10px;">+ Add</button>
+  </h2>
+  <div id="spot-list"></div>
+
+  <div class="actions">
+    <button type="reset" data-i18n="reset">Reset</button>
+    <button type="submit" class="btn-submit" data-i18n="save">Save Plan</button>
+  </div>
+
+  <output id="result" hidden></output>
+</form>
+
+<script>
+  const I18N_FILES     = { en: "i18n/en-US.json", zh: "i18n/zh-TW.json" };
+  const LOCATION_FILES = { en: "db/locations-en.json", zh: "db/locations-zh.json" };
+  const MODE_KEYS      = ["mode_airplane", "mode_hsr", "mode_car"];
+
+  let lang = "en";
+  let STRINGS = {};
+  let LOCATIONS = {};
+
+  const countrySel = document.getElementById("country");
+  const citySel    = document.getElementById("city");
+  const langSel    = document.getElementById("lang");
+  const form       = document.getElementById("trip-form");
+  const result     = document.getElementById("result");
+
+  function t(key) { return (STRINGS && STRINGS[key]) || key; }
+
+  function loadI18n() {
+    return fetch(I18N_FILES[lang])
+      .then(r => {
+        if (!r.ok) throw new Error(`Failed to load ${I18N_FILES[lang]} (${r.status})`);
+        return r.json();
+      })
+      .then(data => {
+        STRINGS = data;
+        applyStaticI18n();
+      })
+      .catch(err => {
+        console.error(err);
+        STRINGS = {};
+        applyStaticI18n();
+      });
+  }
+
+  function applyStaticI18n() {
+    document.documentElement.lang = lang;
+    document.title = t("title");
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+      el.textContent = t(el.dataset.i18n);
+    });
+    document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+      el.placeholder = t(el.dataset.i18nPlaceholder);
+    });
+  }
+
+  function loadLocations() {
+    return fetch(LOCATION_FILES[lang])
+      .then(r => {
+        if (!r.ok) throw new Error(`Failed to load ${LOCATION_FILES[lang]} (${r.status})`);
+        return r.json();
+      })
+      .then(data => {
+        LOCATIONS = data;
+        countrySel.innerHTML = "";
+        Object.keys(LOCATIONS).forEach(c => countrySel.add(new Option(c, c)));
+        refreshCities();
+      })
+      .catch(err => {
+        console.error(err);
+        const existing = document.getElementById("load-error");
+        if (existing) existing.remove();
+        const div = document.createElement("div");
+        div.id = "load-error";
+        div.className = "hint";
+        div.style.color = "var(--danger)";
+        div.textContent = t("load_error");
+        countrySel.insertAdjacentElement("afterend", div);
+      });
+  }
+
+  function refreshCities() {
+    const picked = new Set(Array.from(citySel.selectedOptions).map(o => o.value));
+    citySel.innerHTML = "";
+    const countries = Array.from(countrySel.selectedOptions).map(o => o.value);
+    const pool = countries.length ? countries : Object.keys(LOCATIONS);
+    pool.forEach(country => {
+      const group = document.createElement("optgroup");
+      group.label = country;
+      (LOCATIONS[country] || []).forEach(city => {
+        const opt = new Option(city, `${country}:${city}`);
+        if (picked.has(opt.value)) opt.selected = true;
+        group.appendChild(opt);
+      });
+      citySel.appendChild(group);
+    });
+  }
+  countrySel.addEventListener("change", refreshCities);
+
+  let counters = { transport: 0, stay: 0, spot: 0 };
+
+  function addEntry(kind) {
+    counters[kind] += 1;
+    const no = counters[kind];
+    const wrap = document.createElement("div");
+    wrap.className = "entry";
+    wrap.dataset.kind = kind;
+
+    let inner = `
+      <div class="entry-head">
+        <div class="entry-head-left">
+          <span class="drag-handle" title="Drag to reorder">⋮⋮</span>
+          <strong><span data-i18n="entry_${kind}"></span> #<span class="no">${no}</span></strong>
+        </div>
+        <button type="button" class="btn-remove" data-i18n="remove"></button>
+      </div>`;
+
+    if (kind === "transport") {
+      inner += `
+        <div class="row">
+          <div>
+            <label data-i18n="mode"></label>
+            <select name="transport-mode" required>
+              <option value="" data-i18n="select_placeholder"></option>
+              ${MODE_KEYS.map(k => `<option value="${k}" data-i18n="${k}"></option>`).join("")}
+            </select>
+          </div>
+          <div><label data-i18n="from"></label><input name="transport-from" type="text" required></div>
+          <div><label data-i18n="to"></label><input name="transport-to" type="text" required></div>
+          <div><label data-i18n="from_time"></label><input name="transport-from-time" type="datetime-local"></div>
+          <div><label data-i18n="to_time"></label><input name="transport-to-time" type="datetime-local"></div>
+          <div><label data-i18n="price"></label><input name="transport-price" type="number" min="0" step="0.01"></div>
+          <div><label data-i18n="no"></label><input name="transport-no" type="text" data-i18n-placeholder="reservation"></div>
+        </div>`;
+    } else if (kind === "stay") {
+      inner += `
+        <div class="row">
+          <div><label data-i18n="name"></label><input name="stay-name" type="text" required></div>
+          <div><label data-i18n="address"></label><input name="stay-address" type="text"></div>
+          <div><label data-i18n="price"></label><input name="stay-price" type="number" min="0" step="0.01"></div>
+        </div>`;
+    } else if (kind === "spot") {
+      inner += `
+        <div class="row">
+          <div><label data-i18n="name"></label><input name="spot-name" type="text" required></div>
+          <div><label data-i18n="price"></label><input name="spot-price" type="number" min="0" step="0.01"></div>
+        </div>`;
+    }
+
+    wrap.innerHTML = inner;
+    wrap.querySelector(".btn-remove").addEventListener("click", () => {
+      wrap.remove();
+      renumber(kind);
+    });
+    enableDrag(wrap, kind);
+    document.getElementById(`${kind}-list`).appendChild(wrap);
+    applyStaticI18n();
+  }
+
+  function enableDrag(wrap, kind) {
+    wrap.addEventListener("mousedown", e => {
+      wrap.draggable = !!e.target.closest(".drag-handle");
+    });
+    wrap.addEventListener("dragstart", e => {
+      wrap.classList.add("dragging");
+      e.dataTransfer.effectAllowed = "move";
+      e.dataTransfer.setData("text/plain", kind);
+    });
+    wrap.addEventListener("dragend", () => {
+      wrap.classList.remove("dragging");
+      wrap.draggable = false;
+      renumber(kind);
+    });
+  }
+
+  function getDragAfter(list, y) {
+    const items = [...list.querySelectorAll(".entry:not(.dragging)")];
+    return items.reduce((closest, el) => {
+      const box = el.getBoundingClientRect();
+      const offset = y - box.top - box.height / 2;
+      if (offset < 0 && offset > closest.offset) return { offset, element: el };
+      return closest;
+    }, { offset: -Infinity, element: null }).element;
+  }
+
+  ["transport", "stay", "spot"].forEach(kind => {
+    const list = document.getElementById(`${kind}-list`);
+    list.addEventListener("dragover", e => {
+      const dragging = list.querySelector(".dragging");
+      if (!dragging) return;
+      e.preventDefault();
+      const after = getDragAfter(list, e.clientY);
+      if (after == null) list.appendChild(dragging);
+      else list.insertBefore(dragging, after);
+    });
+  });
+
+  function renumber(kind) {
+    const list = document.querySelectorAll(`#${kind}-list .entry`);
+    counters[kind] = list.length;
+    list.forEach((el, i) => el.querySelector(".no").textContent = String(i + 1));
+  }
+
+  document.querySelectorAll("[data-add]").forEach(btn => {
+    btn.addEventListener("click", () => addEntry(btn.dataset.add));
+  });
+
+  langSel.addEventListener("change", () => {
+    lang = langSel.value;
+    Promise.all([loadI18n(), loadLocations()]);
+  });
+
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    const data = {
+      lang,
+      countries: Array.from(countrySel.selectedOptions).map(o => o.value),
+      cities:    Array.from(citySel.selectedOptions).map(o => o.value),
+      transport: collect("transport", ["mode", "from", "to", "from-time", "to-time", "price", "no"]),
+      stay:      collect("stay",      ["name", "address", "price"]),
+      spot:      collect("spot",      ["name", "price"])
+    };
+    result.hidden = false;
+    result.textContent = JSON.stringify(data, null, 2);
+  });
+
+  function collect(kind, fields) {
+    return Array.from(document.querySelectorAll(`#${kind}-list .entry`)).map((el, i) => {
+      const item = { no: i + 1 };
+      fields.forEach(f => {
+        const input = el.querySelector(`[name="${kind}-${f}"]`);
+        if (input) item[f] = input.value;
+      });
+      return item;
+    });
+  }
+
+  form.addEventListener("reset", () => {
+    setTimeout(() => {
+      ["transport", "stay", "spot"].forEach(k => {
+        document.getElementById(`${k}-list`).innerHTML = "";
+        counters[k] = 0;
+        addEntry(k);
+      });
+      refreshCities();
+      result.hidden = true;
+    }, 0);
+  });
+
+  loadI18n().then(() => {
+    addEntry("transport");
+    addEntry("stay");
+    addEntry("spot");
+  });
+  loadLocations();
+</script>
+
+</body>
+</html>

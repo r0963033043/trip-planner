@@ -1,0 +1,8 @@
+{
+  "Taiwan": ["Taipei", "Taichung", "Tainan", "Kaohsiung", "Hualien"],
+  "Japan":  ["Tokyo", "Osaka", "Kyoto", "Sapporo", "Fukuoka", "Okinawa"],
+  "Korea":  ["Seoul", "Busan", "Jeju", "Incheon"],
+  "USA":    ["New York", "San Francisco", "Los Angeles", "Seattle", "Chicago"],
+  "France": ["Paris", "Lyon", "Marseille", "Nice"],
+  "Italy":  ["Rome", "Milan", "Venice", "Florence"]
+}

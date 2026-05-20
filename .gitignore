@@ -1,0 +1,11 @@
+# --- JetBrains IDE ---
+.idea/
+*.iws
+
+# --- VS Code ---
+.vscode/
+*.code-workspace
+
+data/
+
+test/
