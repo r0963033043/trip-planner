@@ -1,7 +1,7 @@
 {
   "title": "Plan a Trip",
   "language": "Language",
-  "destination": "Destination",
+  "location": "Location",
   "country": "Country (multi)",
   "city": "City (multi)",
   "hint_filter": "Filtered by selected countries",

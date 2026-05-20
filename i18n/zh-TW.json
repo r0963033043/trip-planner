@@ -1,7 +1,7 @@
 {
   "title": "規劃旅程",
   "language": "語言",
-  "destination": "目的地",
+  "location": "地點",
   "country": "國家（可多選）",
   "city": "城市（可多選）",
   "hint_filter": "依所選國家篩選",
