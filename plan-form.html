@@ -6,20 +6,25 @@
 <title>Trip Plan Form</title>
 <style>
   :root {
-    --bg: #f6f7fb;
-    --card: #ffffff;
-    --border: #d9dde6;
-    --accent: #2f6feb;
-    --accent-hover: #1f56c7;
-    --muted: #6b7280;
-    --danger: #c0392b;
+    --bg: #0e1014;
+    --card: #161a22;
+    --surface: #1c2230;
+    --border: #2a3142;
+    --accent: #6ea8ff;
+    --accent-hover: #8fbcff;
+    --text: #e6e8ee;
+    --muted: #9aa3b2;
+    --danger: #f17a6e;
+    --success: #4ade80;
+    --success-hover: #65e898;
     --radius: 8px;
   }
   * { box-sizing: border-box; }
+  html { color-scheme: dark; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     background: var(--bg);
-    color: #1f2937;
+    color: var(--text);
     margin: 0;
     padding: 32px 16px;
   }
@@ -29,7 +34,8 @@
     background: var(--card);
     padding: 28px 32px;
     border-radius: var(--radius);
-    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 16px rgba(0,0,0,0.5);
+    border: 1px solid var(--border);
   }
   .top-bar {
     display: flex;
@@ -58,8 +64,26 @@
     border: 1px solid var(--border);
     border-radius: 6px;
     font: inherit;
-    background: #fff;
+    background: var(--surface);
+    color: var(--text);
   }
+  input::placeholder { color: #5b6577; }
+  input:focus, select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(110, 168, 255, 0.2);
+  }
+  option { background: var(--card); color: var(--text); }
+  select[multiple] option:checked {
+    background: var(--accent) linear-gradient(0deg, var(--accent), var(--accent));
+    color: #0e1014;
+    font-weight: 600;
+  }
+  select[multiple] option {
+    padding: 4px 6px;
+  }
+  optgroup { color: var(--muted); font-style: italic; }
+  input[type="datetime-local"] { color-scheme: dark; }
   select[multiple] { min-height: 120px; }
   .row {
     display: grid;
@@ -72,7 +96,7 @@
     border-radius: var(--radius);
     padding: 14px 16px;
     margin-bottom: 12px;
-    background: #fafbfd;
+    background: var(--surface);
     position: relative;
   }
   .entry-head {
@@ -92,7 +116,7 @@
     user-select: none;
     letter-spacing: -2px;
   }
-  .drag-handle:hover { background: #eef1f6; color: #1f2937; }
+  .drag-handle:hover { background: var(--border); color: var(--text); }
   .drag-handle:active { cursor: grabbing; }
   .entry.dragging { opacity: 0.4; }
   button {
@@ -104,7 +128,8 @@
   }
   .btn-add {
     background: var(--accent);
-    color: #fff;
+    color: #0e1014;
+    font-weight: 600;
   }
   .btn-add:hover { background: var(--accent-hover); }
   .btn-remove {
@@ -120,20 +145,152 @@
     gap: 10px;
     justify-content: flex-end;
   }
+  button[type="reset"] {
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+  button[type="reset"]:hover { background: var(--border); }
   .btn-submit {
-    background: #16a34a;
-    color: #fff;
+    background: var(--success);
+    color: #0e1014;
     padding: 10px 20px;
     font-weight: 600;
   }
-  .btn-submit:hover { background: #128a3d; }
+  .btn-submit:hover { background: var(--success-hover); }
   .hint { font-size: 0.8rem; color: var(--muted); margin-top: 4px; }
+  .info-icon {
+    position: relative;
+    display: inline-block;
+    margin-left: 8px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--border);
+    color: var(--text);
+    font-size: 0.75rem;
+    font-weight: 600;
+    font-style: normal;
+    text-align: center;
+    line-height: 18px;
+    cursor: help;
+    user-select: none;
+    vertical-align: middle;
+  }
+  .info-icon:hover, .info-icon:focus { background: var(--accent); color: #0e1014; outline: none; }
+  .info-icon .tooltip {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    left: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--card);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 0.8rem;
+    font-weight: normal;
+    white-space: nowrap;
+    text-align: left;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    z-index: 10;
+    transition: opacity 0.12s;
+    pointer-events: none;
+  }
+  .info-icon:hover .tooltip,
+  .info-icon:focus .tooltip { visibility: visible; opacity: 1; }
+  .info-icon .tooltip dl {
+    margin: 0;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 4px 16px;
+  }
+  .info-icon .tooltip dt { color: var(--muted); }
+  .info-icon .tooltip dd { margin: 0; }
+
+  .check-select { position: relative; }
+  .check-select-trigger {
+    width: 100%;
+    text-align: left;
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 10px;
+    font: inherit;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+  }
+  .check-select-trigger:hover { border-color: var(--accent); }
+  .check-select-trigger:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(110, 168, 255, 0.2);
+  }
+  .check-select-summary {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .check-select-summary.muted { color: var(--muted); }
+  .check-select-caret { color: var(--muted); font-size: 0.7rem; }
+  .check-select-panel {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(100% + 4px);
+    max-height: 260px;
+    overflow: auto;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.55);
+    z-index: 20;
+    padding: 4px 0;
+  }
+  .check-select-group-label {
+    padding: 8px 10px 2px;
+    font-size: 0.72rem;
+    color: var(--muted);
+    font-style: italic;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .check-select-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    cursor: pointer;
+    user-select: none;
+    font-size: 0.9rem;
+  }
+  .check-select-item:hover { background: var(--surface); }
+  .check-select-item input[type=checkbox] {
+    width: auto;
+    margin: 0;
+    accent-color: var(--accent);
+  }
+  .check-select-empty {
+    padding: 10px 12px;
+    color: var(--muted);
+    font-size: 0.85rem;
+    font-style: italic;
+  }
   output {
     display: block;
     margin-top: 16px;
     padding: 12px;
-    background: #f1f5f9;
+    background: #0a0c10;
+    border: 1px solid var(--border);
     border-radius: 6px;
+    color: #b8c4d6;
     font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
     font-size: 0.85rem;
     white-space: pre-wrap;
@@ -157,18 +314,17 @@
   <h2 data-i18n="destination">Destination</h2>
   <div class="row">
     <div>
-      <label for="country" data-i18n="country">Country (multi)</label>
-      <select id="country" name="country" multiple required></select>
-      <div class="hint" data-i18n="hint_multi">Hold Ctrl/Cmd to select multiple</div>
+      <label data-i18n="country">Country (multi)</label>
+      <div class="check-select" id="country"></div>
     </div>
     <div>
-      <label for="city" data-i18n="city">City (multi)</label>
-      <select id="city" name="city" multiple required></select>
+      <label data-i18n="city">City (multi)</label>
+      <div class="check-select" id="city"></div>
       <div class="hint" data-i18n="hint_filter">Filtered by selected countries</div>
     </div>
   </div>
 
-  <h2><span data-i18n="transportation">Transportation</span>
+  <h2><span data-i18n="transportation">Transportation</span><span class="info-icon" id="speed-info" tabindex="0" aria-label="Speed reference">i<span class="tooltip" id="speed-tooltip"></span></span>
     <button type="button" class="btn-add" data-add="transport" data-i18n="add" style="float:right;font-size:0.85rem;padding:4px 10px;">+ Add</button>
   </h2>
   <div id="transport-list"></div>
@@ -191,38 +347,140 @@
   <output id="result" hidden></output>
 </form>
 
-<script>
-  const I18N_FILES     = { en: "i18n/en-US.json", zh: "i18n/zh-TW.json" };
-  const LOCATION_FILES = { en: "db/locations-en.json", zh: "db/locations-zh.json" };
-  const MODE_KEYS      = ["mode_airplane", "mode_hsr", "mode_car"];
+<script type="module">
+  import { fetchI18n } from './api/i18n.js';
+  import { fetchLocations, fetchTransportHubs } from './api/locations.js';
+
+  const MODE_KEYS = ["mode_airplane", "mode_hsr", "mode_train", "mode_metro", "mode_light_rail", "mode_bus", "mode_ferry", "mode_car"];
 
   let lang = "en";
   let STRINGS = {};
   let LOCATIONS = {};
+  let HUBS = {};
+  let datalistSeq = 0;
 
-  const countrySel = document.getElementById("country");
-  const citySel    = document.getElementById("city");
   const langSel    = document.getElementById("lang");
   const form       = document.getElementById("trip-form");
   const result     = document.getElementById("result");
 
   function t(key) { return (STRINGS && STRINGS[key]) || key; }
 
-  function loadI18n() {
-    return fetch(I18N_FILES[lang])
-      .then(r => {
-        if (!r.ok) throw new Error(`Failed to load ${I18N_FILES[lang]} (${r.status})`);
-        return r.json();
-      })
-      .then(data => {
-        STRINGS = data;
-        applyStaticI18n();
-      })
-      .catch(err => {
-        console.error(err);
-        STRINGS = {};
-        applyStaticI18n();
+  class CheckSelect {
+    constructor(root, opts = {}) {
+      this.root = root;
+      this.grouped = !!opts.grouped;
+      this.onChange = opts.onChange || (() => {});
+      this.placeholderKey = opts.placeholderKey || "";
+      this.values = new Set();
+      this.items = [];
+      this._render();
+      this._wire();
+    }
+    setItems(items) {
+      this.items = items;
+      const valid = new Set(items.map(i => i.value));
+      [...this.values].forEach(v => { if (!valid.has(v)) this.values.delete(v); });
+      this._renderPanel();
+      this._renderSummary();
+    }
+    setValues(vals) {
+      this.values = new Set(vals);
+      this._syncCheckboxes();
+      this._renderSummary();
+    }
+    getValues() { return [...this.values]; }
+    applyI18n() { this._renderSummary(); }
+    _esc(s) { return String(s).replace(/[<>&"]/g, c => ({"<":"&lt;",">":"&gt;","&":"&amp;",'"':"&quot;"}[c])); }
+    _render() {
+      this.root.innerHTML = `
+        <button type="button" class="check-select-trigger" aria-expanded="false">
+          <span class="check-select-summary muted"></span>
+          <span class="check-select-caret">▾</span>
+        </button>
+        <div class="check-select-panel" hidden></div>`;
+      this.trigger = this.root.querySelector(".check-select-trigger");
+      this.summary = this.root.querySelector(".check-select-summary");
+      this.panel   = this.root.querySelector(".check-select-panel");
+    }
+    _wire() {
+      this.trigger.addEventListener("click", e => { e.stopPropagation(); this.toggle(); });
+      document.addEventListener("click", e => {
+        if (!this.root.contains(e.target)) this.close();
       });
+      document.addEventListener("keydown", e => {
+        if (e.key === "Escape") this.close();
+      });
+    }
+    toggle() {
+      const open = !this.panel.hidden;
+      if (open) this.close(); else this.open();
+    }
+    open()  { this.panel.hidden = false; this.trigger.setAttribute("aria-expanded", "true"); }
+    close() { this.panel.hidden = true;  this.trigger.setAttribute("aria-expanded", "false"); }
+    _renderPanel() {
+      if (!this.items.length) {
+        this.panel.innerHTML = `<div class="check-select-empty">${this._esc(t("empty_panel"))}</div>`;
+        return;
+      }
+      let html = "";
+      if (this.grouped) {
+        const groups = new Map();
+        this.items.forEach(i => {
+          if (!groups.has(i.group)) groups.set(i.group, []);
+          groups.get(i.group).push(i);
+        });
+        groups.forEach((list, g) => {
+          html += `<div class="check-select-group-label">${this._esc(g)}</div>`;
+          list.forEach(i => html += this._itemHtml(i));
+        });
+      } else {
+        this.items.forEach(i => html += this._itemHtml(i));
+      }
+      this.panel.innerHTML = html;
+      this.panel.querySelectorAll("input[type=checkbox]").forEach(cb => {
+        cb.addEventListener("change", () => {
+          if (cb.checked) this.values.add(cb.value); else this.values.delete(cb.value);
+          this._renderSummary();
+          this.onChange();
+        });
+      });
+    }
+    _itemHtml(i) {
+      const checked = this.values.has(i.value) ? "checked" : "";
+      return `<label class="check-select-item"><input type="checkbox" value="${this._esc(i.value)}" ${checked}><span>${this._esc(i.label)}</span></label>`;
+    }
+    _syncCheckboxes() {
+      this.panel.querySelectorAll("input[type=checkbox]").forEach(cb => {
+        cb.checked = this.values.has(cb.value);
+      });
+    }
+    _renderSummary() {
+      if (this.values.size === 0) {
+        this.summary.textContent = this.placeholderKey ? t(this.placeholderKey) : "—";
+        this.summary.classList.add("muted");
+      } else {
+        const labels = this.items.filter(i => this.values.has(i.value)).map(i => i.label);
+        this.summary.textContent = labels.join(", ");
+        this.summary.classList.remove("muted");
+      }
+    }
+  }
+
+  const countryPicker = new CheckSelect(document.getElementById("country"), {
+    grouped: false,
+    placeholderKey: "country_placeholder",
+    onChange: () => { refreshCities(); refreshAllHubs(); }
+  });
+  const cityPicker = new CheckSelect(document.getElementById("city"), {
+    grouped: true,
+    placeholderKey: "city_placeholder",
+    onChange: refreshAllHubs
+  });
+
+  function loadI18n() {
+    return fetchI18n(lang)
+      .then(data => { STRINGS = data; applyStaticI18n(); })
+      .catch(err => { console.error(err); STRINGS = {}; applyStaticI18n(); });
   }
 
   function applyStaticI18n() {
@@ -234,18 +492,29 @@
     document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
       el.placeholder = t(el.dataset.i18nPlaceholder);
     });
+    document.querySelectorAll("[data-i18n-title]").forEach(el => {
+      el.title = t(el.dataset.i18nTitle);
+    });
+    applySpeedTooltip();
+    if (typeof countryPicker !== "undefined") countryPicker.applyI18n();
+    if (typeof cityPicker    !== "undefined") cityPicker.applyI18n();
+  }
+
+  const RAIL_MODES = ["mode_hsr", "mode_train", "mode_metro", "mode_light_rail"];
+  function applySpeedTooltip() {
+    const tt = document.getElementById("speed-tooltip");
+    if (!tt) return;
+    tt.innerHTML = "<dl>" + RAIL_MODES.map(k => {
+      const speedKey = "speed_" + k.replace(/^mode_/, "");
+      return `<dt>${t(k)}</dt><dd>${t(speedKey)}</dd>`;
+    }).join("") + "</dl>";
   }
 
   function loadLocations() {
-    return fetch(LOCATION_FILES[lang])
-      .then(r => {
-        if (!r.ok) throw new Error(`Failed to load ${LOCATION_FILES[lang]} (${r.status})`);
-        return r.json();
-      })
+    return fetchLocations(lang)
       .then(data => {
         LOCATIONS = data;
-        countrySel.innerHTML = "";
-        Object.keys(LOCATIONS).forEach(c => countrySel.add(new Option(c, c)));
+        countryPicker.setItems(Object.keys(LOCATIONS).map(c => ({ value: c, label: c })));
         refreshCities();
       })
       .catch(err => {
@@ -257,27 +526,63 @@
         div.className = "hint";
         div.style.color = "var(--danger)";
         div.textContent = t("load_error");
-        countrySel.insertAdjacentElement("afterend", div);
+        document.getElementById("country").insertAdjacentElement("afterend", div);
       });
   }
 
-  function refreshCities() {
-    const picked = new Set(Array.from(citySel.selectedOptions).map(o => o.value));
-    citySel.innerHTML = "";
-    const countries = Array.from(countrySel.selectedOptions).map(o => o.value);
-    const pool = countries.length ? countries : Object.keys(LOCATIONS);
-    pool.forEach(country => {
-      const group = document.createElement("optgroup");
-      group.label = country;
-      (LOCATIONS[country] || []).forEach(city => {
-        const opt = new Option(city, `${country}:${city}`);
-        if (picked.has(opt.value)) opt.selected = true;
-        group.appendChild(opt);
+  function loadHubs() {
+    return fetchTransportHubs(lang)
+      .then(data => { HUBS = data; refreshAllHubs(); })
+      .catch(err => { console.error(err); HUBS = {}; refreshAllHubs(); });
+  }
+
+  function hubsFor(modeKey, cityPairs, countries) {
+    const byCountry = HUBS[modeKey];
+    if (!byCountry) return [];
+    const out = new Set();
+
+    if (cityPairs.length) {
+      cityPairs.forEach(pair => {
+        const [country, city] = pair.split(":");
+        const cityMap = byCountry[country];
+        if (cityMap && cityMap[city]) cityMap[city].forEach(h => out.add(h));
       });
-      citySel.appendChild(group);
+      if (out.size) return [...out];
+    }
+
+    const keys = countries.length ? countries : Object.keys(byCountry);
+    keys.forEach(c => {
+      const cityMap = byCountry[c];
+      if (cityMap) Object.values(cityMap).forEach(arr => arr.forEach(h => out.add(h)));
+    });
+    return [...out];
+  }
+
+  function refreshHubsForEntry(entry) {
+    const modeKey = entry.querySelector('[name="transport-mode"]').value;
+    const countries = countryPicker.getValues();
+    const cities    = cityPicker.getValues();
+    const opts = hubsFor(modeKey, cities, countries);
+    entry.querySelectorAll('datalist').forEach(dl => {
+      dl.innerHTML = opts.map(h => `<option value="${h.replace(/"/g, '&quot;')}"></option>`).join("");
     });
   }
-  countrySel.addEventListener("change", refreshCities);
+
+  function refreshAllHubs() {
+    document.querySelectorAll('#transport-list .entry').forEach(refreshHubsForEntry);
+  }
+
+  function refreshCities() {
+    const countries = countryPicker.getValues();
+    const pool = countries.length ? countries : Object.keys(LOCATIONS);
+    const items = [];
+    pool.forEach(country => {
+      (LOCATIONS[country] || []).forEach(city => {
+        items.push({ value: `${country}:${city}`, label: city, group: country });
+      });
+    });
+    cityPicker.setItems(items);
+  }
 
   let counters = { transport: 0, stay: 0, spot: 0 };
 
@@ -298,6 +603,8 @@
       </div>`;
 
     if (kind === "transport") {
+      const fromId = `hubs-from-${++datalistSeq}`;
+      const toId   = `hubs-to-${datalistSeq}`;
       inner += `
         <div class="row">
           <div>
@@ -307,8 +614,16 @@
               ${MODE_KEYS.map(k => `<option value="${k}" data-i18n="${k}"></option>`).join("")}
             </select>
           </div>
-          <div><label data-i18n="from"></label><input name="transport-from" type="text" required></div>
-          <div><label data-i18n="to"></label><input name="transport-to" type="text" required></div>
+          <div>
+            <label data-i18n="from"></label>
+            <input name="transport-from" type="text" list="${fromId}" required>
+            <datalist id="${fromId}"></datalist>
+          </div>
+          <div>
+            <label data-i18n="to"></label>
+            <input name="transport-to" type="text" list="${toId}" required>
+            <datalist id="${toId}"></datalist>
+          </div>
           <div><label data-i18n="from_time"></label><input name="transport-from-time" type="datetime-local"></div>
           <div><label data-i18n="to_time"></label><input name="transport-to-time" type="datetime-local"></div>
           <div><label data-i18n="price"></label><input name="transport-price" type="number" min="0" step="0.01"></div>
@@ -334,6 +649,11 @@
       wrap.remove();
       renumber(kind);
     });
+    if (kind === "transport") {
+      const modeSel = wrap.querySelector('[name="transport-mode"]');
+      modeSel.addEventListener("change", () => refreshHubsForEntry(wrap));
+      refreshHubsForEntry(wrap);
+    }
     enableDrag(wrap, kind);
     document.getElementById(`${kind}-list`).appendChild(wrap);
     applyStaticI18n();
@@ -389,15 +709,15 @@
 
   langSel.addEventListener("change", () => {
     lang = langSel.value;
-    Promise.all([loadI18n(), loadLocations()]);
+    Promise.all([loadI18n(), loadLocations(), loadHubs()]);
   });
 
   form.addEventListener("submit", e => {
     e.preventDefault();
     const data = {
       lang,
-      countries: Array.from(countrySel.selectedOptions).map(o => o.value),
-      cities:    Array.from(citySel.selectedOptions).map(o => o.value),
+      countries: countryPicker.getValues(),
+      cities:    cityPicker.getValues(),
       transport: collect("transport", ["mode", "from", "to", "from-time", "to-time", "price", "no"]),
       stay:      collect("stay",      ["name", "address", "price"]),
       spot:      collect("spot",      ["name", "price"])
@@ -424,6 +744,8 @@
         counters[k] = 0;
         addEntry(k);
       });
+      countryPicker.setValues([]);
+      cityPicker.setValues([]);
       refreshCities();
       result.hidden = true;
     }, 0);
@@ -435,6 +757,7 @@
     addEntry("spot");
   });
   loadLocations();
+  loadHubs();
 </script>
 
 </body>
