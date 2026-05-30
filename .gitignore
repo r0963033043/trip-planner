@@ -6,6 +6,11 @@
 .vscode/
 *.code-workspace
 
-data/
+# --- Node / Vite ---
+node_modules/
+dist/
+*.local
 
-test/
+/data/
+
+/test/
