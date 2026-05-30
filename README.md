@@ -7,10 +7,10 @@ A React + Vite trip planner. Pick countries and cities, then add transport legs,
 ## Development
 
 ```
-npm install      # install dependencies
-npm run dev      # start the dev server (http://localhost:5173)
-npm run build    # production build into dist/
-npm run preview  # preview the production build
+pnpm install     # install dependencies
+pnpm dev         # start the dev server (http://localhost:5173)
+pnpm build       # production build into dist/
+pnpm preview     # preview the production build
 ```
 
 ## Project layout
@@ -61,6 +61,6 @@ src/
 
 ## Deployment
 
-Build with `npm run build` and serve the `dist/` output. Published to the
+Build with `pnpm build` and serve the `dist/` output. Published to the
 `gh-pages` branch via GitHub Pages; `base: "./"` keeps asset paths relative so
 it works from the project subpath.
