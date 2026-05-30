@@ -202,7 +202,7 @@
       "黃金海岸": ["衝浪者天堂", "Broadbeach North", "Helensvale", "Cavill Avenue"]
     }
   },
-  "mode_bus": {
+  "mode_bus_long": {
     "台灣": {
       "台北": ["台北轉運站", "市府轉運站"],
       "台中": ["台中轉運站"],

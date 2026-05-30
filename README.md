@@ -11,10 +11,12 @@ index.html          Landing page
 plan-form.html      Main form (UI + logic inline)
 api/
   i18n.js           Loads i18n/<lang>.json
-  locations.js      Loads db/locations-*.json and db/transport-hubs-*.json
+  data.js           Loads db/locations-*.json, db/transport-hubs-*.json, db/currencies.json, db/hsr-fares.json
 db/
   locations-*.json       Country -> [city]
   transport-hubs-*.json  Mode -> country -> city -> [hub]
+  currencies.json        [{ code, decimals }]
+  hsr-fares.json         Taiwan THSR standard-car fares (TWD); auto-fills HSR price
 i18n/
   en-US.json
   zh-TW.json

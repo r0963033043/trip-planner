@@ -43,6 +43,7 @@
     align-items: center;
     gap: 12px;
   }
+  .pickers { display: flex; align-items: center; gap: 16px; }
   .lang-picker { display: flex; align-items: center; gap: 6px; font-size: 0.85rem; color: var(--muted); }
   .lang-picker select { width: auto; padding: 4px 8px; }
   h1 { margin: 0; }
@@ -85,11 +86,31 @@
   optgroup { color: var(--muted); font-style: italic; }
   input[type="datetime-local"] { color-scheme: dark; }
   select[multiple] { min-height: 120px; }
-  .row {
+  .row-top {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 12px;
     margin-bottom: 12px;
+  }
+  .row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: start;
+      gap: 12px;
+      margin-bottom: 12px;
+  }
+  .row-main {
+      flex: 1 1 320px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+  }
+  .price-col {
+    flex: 0 0 140px;
+    margin-left: auto;
+  }
+  .price-col input {
+    text-align: right;
   }
   .entry {
     border: 1px solid var(--border);
@@ -139,6 +160,24 @@
     font-size: 0.85rem;
   }
   .btn-remove:hover { text-decoration: underline; }
+  .total-bar {
+    margin-top: 20px;
+    padding-top: 14px;
+    border-top: 2px solid var(--border);
+    display: flex;
+    justify-content: flex-end;
+    align-items: baseline;
+    gap: 12px;
+    font-size: 1.05rem;
+  }
+  .total-bar .total-label { color: var(--muted); }
+  .total-bar .total-amount {
+    font-weight: 700;
+    font-size: 1.25rem;
+    font-variant-numeric: tabular-nums;
+    min-width: 110px;
+    text-align: right;
+  }
   .actions {
     margin-top: 24px;
     display: flex;
@@ -302,17 +341,23 @@
 <form id="trip-form">
   <div class="top-bar">
     <h1 data-i18n="title">Plan a Trip</h1>
-    <div class="lang-picker">
-      <label for="lang" data-i18n="language" style="margin:0">Language</label>
-      <select id="lang">
-        <option value="en">English</option>
-        <option value="zh">繁體中文</option>
-      </select>
+    <div class="pickers">
+      <div class="lang-picker">
+        <label for="currency" data-i18n="currency" style="margin:0">Currency</label>
+        <select id="currency"></select>
+      </div>
+      <div class="lang-picker">
+        <label for="lang" data-i18n="language" style="margin:0">Language</label>
+        <select id="lang">
+          <option value="en">English</option>
+          <option value="zh">繁體中文</option>
+        </select>
+      </div>
     </div>
   </div>
 
   <h2 data-i18n="location">Location</h2>
-  <div class="row">
+  <div class="row-top">
     <div>
       <label data-i18n="country">Country (multi)</label>
       <div class="check-select" id="country"></div>
@@ -339,6 +384,11 @@
   </h2>
   <div id="spot-list"></div>
 
+  <div class="total-bar">
+    <span class="total-label" data-i18n="total">Total</span>
+    <span class="total-amount" id="total-amount">0.00</span>
+  </div>
+
   <div class="actions">
     <button type="reset" data-i18n="reset">Reset</button>
     <button type="submit" class="btn-submit" data-i18n="save">Save Plan</button>
@@ -349,19 +399,50 @@
 
 <script type="module">
   import { fetchI18n } from './api/i18n.js';
-  import { fetchLocations, fetchTransportHubs } from './api/locations.js';
+  import { fetchLocations, fetchTransportHubs, fetchCurrencies, fetchHsrFares } from './api/data.js';
 
-  const MODE_KEYS = ["mode_airplane", "mode_hsr", "mode_train", "mode_metro", "mode_light_rail", "mode_bus", "mode_ferry", "mode_car"];
+  const MODE_KEYS = ["mode_airplane", "mode_hsr", "mode_train", "mode_metro", "mode_light_rail", "mode_bus_long", "mode_bus_short", "mode_ferry", "mode_car"];
+  let CURRENCIES = [];
+  let CURRENCY_DECIMALS = {};
+  const decimalsFor = c => CURRENCY_DECIMALS[c] ?? 2;
 
   let lang = "en";
+  let currency = "USD";
   let STRINGS = {};
   let LOCATIONS = {};
   let HUBS = {};
+  let HSR_FARES = null;
   let datalistSeq = 0;
 
-  const langSel    = document.getElementById("lang");
-  const form       = document.getElementById("trip-form");
-  const result     = document.getElementById("result");
+  const langSel     = document.getElementById("lang");
+  const currencySel = document.getElementById("currency");
+  const form        = document.getElementById("trip-form");
+  const result      = document.getElementById("result");
+  const totalAmount = document.getElementById("total-amount");
+
+  function formatMoney(n) {
+    const d = decimalsFor(currency);
+    try {
+      return new Intl.NumberFormat(lang === "zh" ? "zh-TW" : "en-US", {
+        style: "currency", currency, minimumFractionDigits: d, maximumFractionDigits: d
+      }).format(n);
+    } catch {
+      return `${currency} ${n.toFixed(d)}`;
+    }
+  }
+
+  function totalValue() {
+    let sum = 0;
+    document.querySelectorAll('input[name$="-price"]').forEach(inp => {
+      const v = parseFloat(inp.value);
+      if (!isNaN(v)) sum += v;
+    });
+    return sum;
+  }
+
+  function updateTotal() {
+    totalAmount.textContent = formatMoney(totalValue());
+  }
 
   function t(key) { return (STRINGS && STRINGS[key]) || key; }
 
@@ -496,6 +577,14 @@
       el.title = t(el.dataset.i18nTitle);
     });
     applySpeedTooltip();
+    const priceStep = decimalsFor(currency) === 0 ? "1" : "0.01";
+    document.querySelectorAll(".price-col").forEach(col => {
+      const label = col.querySelector("label");
+      if (label) label.textContent = `${t("price")} (${currency})`;
+      const input = col.querySelector("input");
+      if (input) input.step = priceStep;
+    });
+    updateTotal();
     if (typeof countryPicker !== "undefined") countryPicker.applyI18n();
     if (typeof cityPicker    !== "undefined") cityPicker.applyI18n();
   }
@@ -534,6 +623,46 @@
     return fetchTransportHubs(lang)
       .then(data => { HUBS = data; refreshAllHubs(); })
       .catch(err => { console.error(err); HUBS = {}; refreshAllHubs(); });
+  }
+
+  function loadHsrFares() {
+    return fetchHsrFares()
+      .then(data => { HSR_FARES = data; autofillAllHsrPrices(); })
+      .catch(err => { console.error(err); HSR_FARES = null; });
+  }
+
+  /**
+   * Auto-fill the price for a Taiwan HSR leg from the official fare table.
+   * Fares are in TWD, so only fill when the chosen currency is TWD. When the
+   * leg is no longer a known HSR route (mode changed, currency changed, route
+   * cleared), clear any value we previously auto-filled — but never a value
+   * the user typed (the price input listener drops the autofilled flag on edit).
+   */
+  function autofillHsrPrice(entry) {
+    const priceInput = entry.querySelector('[name="transport-price"]');
+    const clearIfAuto = () => {
+      if (priceInput.dataset.autofilled) {
+        priceInput.value = "";
+        delete priceInput.dataset.autofilled;
+        updateTotal();
+      }
+    };
+    if (!HSR_FARES || currency !== HSR_FARES.currency) return clearIfAuto();
+    if (entry.querySelector('[name="transport-mode"]').value !== "mode_hsr") return clearIfAuto();
+    const from = entry.querySelector('[name="transport-from"]').value.trim();
+    const to   = entry.querySelector('[name="transport-to"]').value.trim();
+    const a = HSR_FARES.stations[from];
+    const b = HSR_FARES.stations[to];
+    if (!a || !b || a === b) return clearIfAuto();
+    const fare = HSR_FARES.fares[`${a}-${b}`] ?? HSR_FARES.fares[`${b}-${a}`];
+    if (fare == null) return clearIfAuto();
+    priceInput.value = fare;
+    priceInput.dataset.autofilled = "1";
+    updateTotal();
+  }
+
+  function autofillAllHsrPrices() {
+    document.querySelectorAll('#transport-list .entry').forEach(autofillHsrPrice);
   }
 
   function hubsFor(modeKey, cityPairs, countries) {
@@ -607,40 +736,46 @@
       const toId   = `hubs-to-${datalistSeq}`;
       inner += `
         <div class="row">
-          <div>
-            <label data-i18n="mode"></label>
-            <select name="transport-mode" required>
-              <option value="" data-i18n="select_placeholder"></option>
-              ${MODE_KEYS.map(k => `<option value="${k}" data-i18n="${k}"></option>`).join("")}
-            </select>
+          <div class="row-main">
+            <div>
+              <label data-i18n="mode"></label>
+              <select name="transport-mode" required>
+                <option value="" data-i18n="select_placeholder"></option>
+                ${MODE_KEYS.map(k => `<option value="${k}" data-i18n="${k}"></option>`).join("")}
+              </select>
+            </div>
+            <div>
+              <label data-i18n="from"></label>
+              <input name="transport-from" type="text" list="${fromId}" required>
+              <datalist id="${fromId}"></datalist>
+            </div>
+            <div>
+              <label data-i18n="to"></label>
+              <input name="transport-to" type="text" list="${toId}" required>
+              <datalist id="${toId}"></datalist>
+            </div>
+            <div><label data-i18n="from_time"></label><input name="transport-from-time" type="datetime-local"></div>
+            <div><label data-i18n="to_time"></label><input name="transport-to-time" type="datetime-local"></div>
+            <div><label data-i18n="no"></label><input name="transport-no" type="text" data-i18n-placeholder="reservation"></div>
           </div>
-          <div>
-            <label data-i18n="from"></label>
-            <input name="transport-from" type="text" list="${fromId}" required>
-            <datalist id="${fromId}"></datalist>
-          </div>
-          <div>
-            <label data-i18n="to"></label>
-            <input name="transport-to" type="text" list="${toId}" required>
-            <datalist id="${toId}"></datalist>
-          </div>
-          <div><label data-i18n="from_time"></label><input name="transport-from-time" type="datetime-local"></div>
-          <div><label data-i18n="to_time"></label><input name="transport-to-time" type="datetime-local"></div>
-          <div><label data-i18n="price"></label><input name="transport-price" type="number" min="0" step="0.01"></div>
-          <div><label data-i18n="no"></label><input name="transport-no" type="text" data-i18n-placeholder="reservation"></div>
+          <div class="price-col"><label data-i18n="price"></label><input name="transport-price" type="number" min="0" step="0.01"></div>
         </div>`;
     } else if (kind === "stay") {
       inner += `
         <div class="row">
-          <div><label data-i18n="name"></label><input name="stay-name" type="text" required></div>
-          <div><label data-i18n="address"></label><input name="stay-address" type="text"></div>
-          <div><label data-i18n="price"></label><input name="stay-price" type="number" min="0" step="0.01"></div>
+          <div class="row-main">
+            <div><label data-i18n="name"></label><input name="stay-name" type="text" required></div>
+            <div><label data-i18n="address"></label><input name="stay-address" type="text"></div>
+          </div>
+          <div class="price-col"><label data-i18n="price"></label><input name="stay-price" type="number" min="0" step="0.01"></div>
         </div>`;
     } else if (kind === "spot") {
       inner += `
         <div class="row">
-          <div><label data-i18n="name"></label><input name="spot-name" type="text" required></div>
-          <div><label data-i18n="price"></label><input name="spot-price" type="number" min="0" step="0.01"></div>
+          <div class="row-main">
+            <div><label data-i18n="name"></label><input name="spot-name" type="text" required></div>
+          </div>
+          <div class="price-col"><label data-i18n="price"></label><input name="spot-price" type="number" min="0" step="0.01"></div>
         </div>`;
     }
 
@@ -648,15 +783,19 @@
     wrap.querySelector(".btn-remove").addEventListener("click", () => {
       wrap.remove();
       renumber(kind);
+      updateTotal();
     });
     if (kind === "transport") {
       const modeSel = wrap.querySelector('[name="transport-mode"]');
-      modeSel.addEventListener("change", () => refreshHubsForEntry(wrap));
+      modeSel.addEventListener("change", () => { refreshHubsForEntry(wrap); autofillHsrPrice(wrap); });
+      wrap.querySelector('[name="transport-from"]').addEventListener("change", () => autofillHsrPrice(wrap));
+      wrap.querySelector('[name="transport-to"]').addEventListener("change", () => autofillHsrPrice(wrap));
       refreshHubsForEntry(wrap);
     }
     enableDrag(wrap, kind);
     document.getElementById(`${kind}-list`).appendChild(wrap);
     applyStaticI18n();
+    updateTotal();
   }
 
   function enableDrag(wrap, kind) {
@@ -707,6 +846,33 @@
     btn.addEventListener("click", () => addEntry(btn.dataset.add));
   });
 
+  form.addEventListener("input", e => {
+    if (e.target.name && e.target.name.endsWith("-price")) {
+      delete e.target.dataset.autofilled;
+      updateTotal();
+    }
+  });
+
+  function loadCurrencies() {
+    return fetchCurrencies()
+      .then(list => {
+        CURRENCIES = list.map(c => c.code);
+        CURRENCY_DECIMALS = {};
+        list.forEach(c => { CURRENCY_DECIMALS[c.code] = c.decimals; });
+        currencySel.innerHTML = CURRENCIES.map(c => `<option value="${c}">${c}</option>`).join("");
+        if (!CURRENCIES.includes(currency)) currency = CURRENCIES[0] || currency;
+        currencySel.value = currency;
+        updateTotal();
+      })
+      .catch(err => { console.error(err); });
+  }
+
+  currencySel.addEventListener("change", () => {
+    currency = currencySel.value;
+    applyStaticI18n();
+    autofillAllHsrPrices();
+  });
+
   langSel.addEventListener("change", () => {
     lang = langSel.value;
     loadI18n().then(() => {
@@ -719,11 +885,13 @@
     e.preventDefault();
     const data = {
       lang,
+      currency,
       countries: countryPicker.getValues(),
       cities:    cityPicker.getValues(),
       transport: collect("transport", ["mode", "from", "to", "from-time", "to-time", "price", "no"]),
       stay:      collect("stay",      ["name", "address", "price"]),
-      spot:      collect("spot",      ["name", "price"])
+      spot:      collect("spot",      ["name", "price"]),
+      total:     totalValue()
     };
     result.hidden = false;
     result.textContent = JSON.stringify(data, null, 2);
@@ -750,10 +918,14 @@
       countryPicker.setValues([]);
       cityPicker.setValues([]);
       refreshCities();
+      currencySel.value = currency;
+      langSel.value = lang;
       result.hidden = true;
     }, 0);
   });
 
+  loadCurrencies();
+  loadHsrFares();
   loadI18n().then(() => {
     loadLocations();
     loadHubs();

@@ -202,7 +202,7 @@
       "Gold Coast": ["Surfers Paradise", "Broadbeach North", "Helensvale", "Cavill Avenue"]
     }
   },
-  "mode_bus": {
+  "mode_bus_long": {
     "Taiwan": {
       "Taipei":    ["Taipei Bus Station", "Taipei City Hall Bus Station"],
       "Taichung":  ["Taichung Bus Station"],

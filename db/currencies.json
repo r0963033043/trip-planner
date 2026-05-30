@@ -1,0 +1,13 @@
+[
+  { "code": "USD", "decimals": 2 },
+  { "code": "TWD", "decimals": 0 },
+  { "code": "JPY", "decimals": 0 },
+  { "code": "EUR", "decimals": 2 },
+  { "code": "GBP", "decimals": 2 },
+  { "code": "CNY", "decimals": 2 },
+  { "code": "KRW", "decimals": 0 },
+  { "code": "HKD", "decimals": 2 },
+  { "code": "THB", "decimals": 2 },
+  { "code": "SGD", "decimals": 2 },
+  { "code": "AUD", "decimals": 2 }
+]

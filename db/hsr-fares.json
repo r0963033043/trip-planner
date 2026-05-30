@@ -1,0 +1,32 @@
+{
+  "currency": "TWD",
+  "stations": {
+    "Nangang": "NAG", "Taipei": "TPE", "Banqiao": "BAQ", "Taoyuan": "TYN",
+    "Taichung": "TCG", "Tainan": "TNN", "Zuoying": "ZUY",
+    "南港": "NAG", "台北": "TPE", "板橋": "BAQ", "桃園": "TYN",
+    "台中": "TCG", "台南": "TNN", "左營": "ZUY"
+  },
+  "fares": {
+    "NAG-TPE": 40,
+    "NAG-BAQ": 70,
+    "NAG-TYN": 200,
+    "NAG-TCG": 750,
+    "NAG-TNN": 1390,
+    "NAG-ZUY": 1530,
+    "TPE-BAQ": 40,
+    "TPE-TYN": 160,
+    "TPE-TCG": 700,
+    "TPE-TNN": 1350,
+    "TPE-ZUY": 1490,
+    "BAQ-TYN": 130,
+    "BAQ-TCG": 670,
+    "BAQ-TNN": 1320,
+    "BAQ-ZUY": 1460,
+    "TYN-TCG": 540,
+    "TYN-TNN": 1190,
+    "TYN-ZUY": 1330,
+    "TCG-TNN": 650,
+    "TCG-ZUY": 790,
+    "TNN-ZUY": 140
+  }
+}
