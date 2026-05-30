@@ -22,6 +22,7 @@ export const MODE_KEYS = [
 
 export const RAIL_MODES = ['mode_hsr', 'mode_train', 'mode_metro', 'mode_light_rail']
 
+export const CURRENCY_USD = 'USD'
 export const CURRENCIES = currencies.map(c => c.code)
 
 const CURRENCY_DECIMALS = Object.fromEntries(currencies.map(c => [c.code, c.decimals]))
