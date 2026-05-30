@@ -22,6 +22,7 @@
   "from_time": "出發時間",
   "to_time": "抵達時間",
   "price": "價格",
+  "rate_as_of": "匯率更新於",
   "total": "總計",
   "no": "編號",
   "name": "名稱",

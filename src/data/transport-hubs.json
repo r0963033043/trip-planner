@@ -1,0 +1,1972 @@
+{
+  "mode_airplane": {
+    "TW": {
+      "TPE": [
+        {
+          "code": "TPE-0",
+          "en": "TPE Taoyuan",
+          "zh": "TPE 桃園機場"
+        },
+        {
+          "code": "TPE-1",
+          "en": "TSA Songshan",
+          "zh": "TSA 松山機場"
+        }
+      ],
+      "TXG": [
+        {
+          "code": "TXG-0",
+          "en": "RMQ Taichung",
+          "zh": "RMQ 台中機場"
+        }
+      ],
+      "TNN": [
+        {
+          "code": "TNN-0",
+          "en": "TNN Tainan",
+          "zh": "TNN 台南機場"
+        }
+      ],
+      "KHH": [
+        {
+          "code": "KHH-0",
+          "en": "KHH Kaohsiung",
+          "zh": "KHH 高雄機場"
+        }
+      ],
+      "HUN": [
+        {
+          "code": "HUN-0",
+          "en": "HUN Hualien",
+          "zh": "HUN 花蓮機場"
+        }
+      ]
+    },
+    "JP": {
+      "TYO": [
+        {
+          "code": "TYO-0",
+          "en": "HND Haneda",
+          "zh": "HND 羽田"
+        },
+        {
+          "code": "TYO-1",
+          "en": "NRT Narita",
+          "zh": "NRT 成田"
+        }
+      ],
+      "OSA": [
+        {
+          "code": "OSA-0",
+          "en": "KIX Kansai",
+          "zh": "KIX 關西"
+        },
+        {
+          "code": "OSA-1",
+          "en": "ITM Itami",
+          "zh": "ITM 伊丹"
+        }
+      ],
+      "KYO": [
+        {
+          "code": "KYO-0",
+          "en": "KIX Kansai",
+          "zh": "KIX 關西"
+        },
+        {
+          "code": "KYO-1",
+          "en": "ITM Itami",
+          "zh": "ITM 伊丹"
+        }
+      ],
+      "SPK": [
+        {
+          "code": "SPK-0",
+          "en": "CTS Sapporo",
+          "zh": "CTS 札幌"
+        }
+      ],
+      "FUK": [
+        {
+          "code": "FUK-0",
+          "en": "FUK Fukuoka",
+          "zh": "FUK 福岡"
+        }
+      ],
+      "OKA": [
+        {
+          "code": "OKA-0",
+          "en": "OKA Naha",
+          "zh": "OKA 那霸"
+        }
+      ]
+    },
+    "KR": {
+      "SEL": [
+        {
+          "code": "SEL-0",
+          "en": "ICN Incheon",
+          "zh": "ICN 仁川"
+        },
+        {
+          "code": "SEL-1",
+          "en": "GMP Gimpo",
+          "zh": "GMP 金浦"
+        }
+      ],
+      "PUS": [
+        {
+          "code": "PUS-0",
+          "en": "PUS Busan",
+          "zh": "PUS 釜山"
+        }
+      ],
+      "CJU": [
+        {
+          "code": "CJU-0",
+          "en": "CJU Jeju",
+          "zh": "CJU 濟州"
+        }
+      ],
+      "ICN": [
+        {
+          "code": "ICN-0",
+          "en": "ICN Incheon",
+          "zh": "ICN 仁川"
+        }
+      ]
+    },
+    "US": {
+      "NYC": [
+        {
+          "code": "NYC-0",
+          "en": "JFK New York",
+          "zh": "JFK 紐約"
+        },
+        {
+          "code": "NYC-1",
+          "en": "LGA LaGuardia",
+          "zh": "LGA 拉瓜地亞"
+        },
+        {
+          "code": "NYC-2",
+          "en": "EWR Newark",
+          "zh": "EWR 紐華克"
+        }
+      ],
+      "SFO": [
+        {
+          "code": "SFO-0",
+          "en": "SFO San Francisco",
+          "zh": "SFO 舊金山"
+        }
+      ],
+      "LAX": [
+        {
+          "code": "LAX-0",
+          "en": "LAX Los Angeles",
+          "zh": "LAX 洛杉磯"
+        }
+      ],
+      "SEA": [
+        {
+          "code": "SEA-0",
+          "en": "SEA Seattle",
+          "zh": "SEA 西雅圖"
+        }
+      ],
+      "CHI": [
+        {
+          "code": "CHI-0",
+          "en": "ORD Chicago",
+          "zh": "ORD 芝加哥"
+        },
+        {
+          "code": "CHI-1",
+          "en": "MDW Midway",
+          "zh": "MDW 中途"
+        }
+      ]
+    },
+    "FR": {
+      "PAR": [
+        {
+          "code": "PAR-0",
+          "en": "CDG Paris",
+          "zh": "CDG 巴黎戴高樂"
+        },
+        {
+          "code": "PAR-1",
+          "en": "ORY Paris-Orly",
+          "zh": "ORY 巴黎奧利"
+        }
+      ],
+      "LYS": [
+        {
+          "code": "LYS-0",
+          "en": "LYS Lyon",
+          "zh": "LYS 里昂"
+        }
+      ],
+      "MRS": [
+        {
+          "code": "MRS-0",
+          "en": "MRS Marseille",
+          "zh": "MRS 馬賽"
+        }
+      ],
+      "NCE": [
+        {
+          "code": "NCE-0",
+          "en": "NCE Nice",
+          "zh": "NCE 尼斯"
+        }
+      ]
+    },
+    "IT": {
+      "ROM": [
+        {
+          "code": "ROM-0",
+          "en": "FCO Rome",
+          "zh": "FCO 羅馬"
+        },
+        {
+          "code": "ROM-1",
+          "en": "CIA Ciampino",
+          "zh": "CIA 錢皮諾"
+        }
+      ],
+      "MIL": [
+        {
+          "code": "MIL-0",
+          "en": "MXP Milan",
+          "zh": "MXP 米蘭"
+        },
+        {
+          "code": "MIL-1",
+          "en": "LIN Linate",
+          "zh": "LIN 利納特"
+        }
+      ],
+      "VCE": [
+        {
+          "code": "VCE-0",
+          "en": "VCE Venice",
+          "zh": "VCE 威尼斯"
+        }
+      ],
+      "FLR": [
+        {
+          "code": "FLR-0",
+          "en": "FLR Florence",
+          "zh": "FLR 佛羅倫斯"
+        }
+      ]
+    },
+    "AU": {
+      "SYD": [
+        {
+          "code": "SYD-0",
+          "en": "SYD Sydney",
+          "zh": "SYD 雪梨"
+        }
+      ],
+      "MEL": [
+        {
+          "code": "MEL-0",
+          "en": "MEL Melbourne",
+          "zh": "MEL 墨爾本"
+        },
+        {
+          "code": "MEL-1",
+          "en": "AVV Avalon",
+          "zh": "AVV 阿瓦隆"
+        }
+      ],
+      "BNE": [
+        {
+          "code": "BNE-0",
+          "en": "BNE Brisbane",
+          "zh": "BNE 布里斯本"
+        }
+      ],
+      "PER": [
+        {
+          "code": "PER-0",
+          "en": "PER Perth",
+          "zh": "PER 伯斯"
+        }
+      ],
+      "ADL": [
+        {
+          "code": "ADL-0",
+          "en": "ADL Adelaide",
+          "zh": "ADL 阿得雷德"
+        }
+      ],
+      "OOL": [
+        {
+          "code": "OOL-0",
+          "en": "OOL Gold Coast",
+          "zh": "OOL 黃金海岸"
+        }
+      ],
+      "CNS": [
+        {
+          "code": "CNS-0",
+          "en": "CNS Cairns",
+          "zh": "CNS 凱恩斯"
+        }
+      ]
+    }
+  },
+  "mode_hsr": {
+    "TW": {
+      "TPE": [
+        {
+          "code": "TPE-0",
+          "en": "Taipei",
+          "zh": "台北"
+        },
+        {
+          "code": "TPE-1",
+          "en": "Banqiao",
+          "zh": "板橋"
+        },
+        {
+          "code": "TPE-2",
+          "en": "Nangang",
+          "zh": "南港"
+        }
+      ],
+      "TYN": [
+        {
+          "code": "TYN-0",
+          "en": "Taoyuan",
+          "zh": "桃園"
+        }
+      ],
+      "TXG": [
+        {
+          "code": "TXG-0",
+          "en": "Taichung",
+          "zh": "台中"
+        }
+      ],
+      "TNN": [
+        {
+          "code": "TNN-0",
+          "en": "Tainan",
+          "zh": "台南"
+        }
+      ],
+      "KHH": [
+        {
+          "code": "KHH-0",
+          "en": "Zuoying",
+          "zh": "左營"
+        }
+      ]
+    },
+    "JP": {
+      "TYO": [
+        {
+          "code": "TYO-0",
+          "en": "Tokyo",
+          "zh": "東京"
+        },
+        {
+          "code": "TYO-1",
+          "en": "Shinagawa",
+          "zh": "品川"
+        },
+        {
+          "code": "TYO-2",
+          "en": "Ueno",
+          "zh": "上野"
+        }
+      ],
+      "OSA": [
+        {
+          "code": "OSA-0",
+          "en": "Shin-Osaka",
+          "zh": "新大阪"
+        }
+      ],
+      "KYO": [
+        {
+          "code": "KYO-0",
+          "en": "Kyoto",
+          "zh": "京都"
+        }
+      ],
+      "FUK": [
+        {
+          "code": "FUK-0",
+          "en": "Hakata",
+          "zh": "博多"
+        },
+        {
+          "code": "FUK-1",
+          "en": "Kokura",
+          "zh": "小倉"
+        }
+      ]
+    },
+    "KR": {
+      "SEL": [
+        {
+          "code": "SEL-0",
+          "en": "Seoul",
+          "zh": "首爾"
+        },
+        {
+          "code": "SEL-1",
+          "en": "Yongsan",
+          "zh": "龍山"
+        }
+      ],
+      "PUS": [
+        {
+          "code": "PUS-0",
+          "en": "Busan",
+          "zh": "釜山"
+        }
+      ]
+    },
+    "FR": {
+      "PAR": [
+        {
+          "code": "PAR-0",
+          "en": "Paris Gare de Lyon",
+          "zh": "巴黎里昂車站"
+        },
+        {
+          "code": "PAR-1",
+          "en": "Paris Montparnasse",
+          "zh": "巴黎蒙帕納斯"
+        },
+        {
+          "code": "PAR-2",
+          "en": "Paris Nord",
+          "zh": "巴黎北站"
+        }
+      ],
+      "LYS": [
+        {
+          "code": "LYS-0",
+          "en": "Lyon Part-Dieu",
+          "zh": "里昂市中心"
+        }
+      ],
+      "MRS": [
+        {
+          "code": "MRS-0",
+          "en": "Marseille Saint-Charles",
+          "zh": "馬賽聖夏勒"
+        }
+      ],
+      "NCE": [
+        {
+          "code": "NCE-0",
+          "en": "Nice-Ville",
+          "zh": "尼斯市站"
+        }
+      ]
+    },
+    "IT": {
+      "ROM": [
+        {
+          "code": "ROM-0",
+          "en": "Roma Termini",
+          "zh": "羅馬特米尼"
+        },
+        {
+          "code": "ROM-1",
+          "en": "Roma Tiburtina",
+          "zh": "羅馬提布提那"
+        }
+      ],
+      "MIL": [
+        {
+          "code": "MIL-0",
+          "en": "Milano Centrale",
+          "zh": "米蘭中央"
+        },
+        {
+          "code": "MIL-1",
+          "en": "Milano Porta Garibaldi",
+          "zh": "米蘭加里波底門"
+        }
+      ],
+      "VCE": [
+        {
+          "code": "VCE-0",
+          "en": "Venezia S. Lucia",
+          "zh": "威尼斯聖露西亞"
+        },
+        {
+          "code": "VCE-1",
+          "en": "Venezia Mestre",
+          "zh": "威尼斯梅斯特雷"
+        }
+      ],
+      "FLR": [
+        {
+          "code": "FLR-0",
+          "en": "Firenze SMN",
+          "zh": "佛羅倫斯 SMN"
+        }
+      ]
+    }
+  },
+  "mode_train": {
+    "TW": {
+      "TPE": [
+        {
+          "code": "TPE-0",
+          "en": "Taipei",
+          "zh": "台北"
+        },
+        {
+          "code": "TPE-1",
+          "en": "Songshan",
+          "zh": "松山"
+        },
+        {
+          "code": "TPE-2",
+          "en": "Banqiao",
+          "zh": "板橋"
+        }
+      ],
+      "TYN": [
+        {
+          "code": "TYN-0",
+          "en": "Taoyuan",
+          "zh": "桃園"
+        }
+      ],
+      "TXG": [
+        {
+          "code": "TXG-0",
+          "en": "Taichung",
+          "zh": "台中"
+        }
+      ],
+      "TNN": [
+        {
+          "code": "TNN-0",
+          "en": "Tainan",
+          "zh": "台南"
+        }
+      ],
+      "KHH": [
+        {
+          "code": "KHH-0",
+          "en": "Xinzuoying",
+          "zh": "新左營"
+        },
+        {
+          "code": "KHH-1",
+          "en": "Kaohsiung",
+          "zh": "高雄"
+        }
+      ],
+      "HUN": [
+        {
+          "code": "HUN-0",
+          "en": "Hualien",
+          "zh": "花蓮"
+        }
+      ]
+    },
+    "JP": {
+      "TYO": [
+        {
+          "code": "TYO-0",
+          "en": "Tokyo",
+          "zh": "東京"
+        },
+        {
+          "code": "TYO-1",
+          "en": "Shinjuku",
+          "zh": "新宿"
+        },
+        {
+          "code": "TYO-2",
+          "en": "Ueno",
+          "zh": "上野"
+        },
+        {
+          "code": "TYO-3",
+          "en": "Shinagawa",
+          "zh": "品川"
+        }
+      ],
+      "OSA": [
+        {
+          "code": "OSA-0",
+          "en": "Osaka",
+          "zh": "大阪"
+        },
+        {
+          "code": "OSA-1",
+          "en": "Tennoji",
+          "zh": "天王寺"
+        }
+      ],
+      "KYO": [
+        {
+          "code": "KYO-0",
+          "en": "Kyoto",
+          "zh": "京都"
+        }
+      ],
+      "SPK": [
+        {
+          "code": "SPK-0",
+          "en": "Sapporo",
+          "zh": "札幌"
+        }
+      ],
+      "FUK": [
+        {
+          "code": "FUK-0",
+          "en": "Hakata",
+          "zh": "博多"
+        }
+      ]
+    },
+    "KR": {
+      "SEL": [
+        {
+          "code": "SEL-0",
+          "en": "Seoul Station",
+          "zh": "首爾站"
+        },
+        {
+          "code": "SEL-1",
+          "en": "Yongsan",
+          "zh": "龍山"
+        },
+        {
+          "code": "SEL-2",
+          "en": "Cheongnyangni",
+          "zh": "清涼里"
+        }
+      ],
+      "PUS": [
+        {
+          "code": "PUS-0",
+          "en": "Busan Station",
+          "zh": "釜山站"
+        }
+      ]
+    },
+    "US": {
+      "NYC": [
+        {
+          "code": "NYC-0",
+          "en": "Penn Station",
+          "zh": "賓州車站"
+        },
+        {
+          "code": "NYC-1",
+          "en": "Moynihan Train Hall",
+          "zh": "莫伊尼漢車站"
+        },
+        {
+          "code": "NYC-2",
+          "en": "Grand Central",
+          "zh": "中央車站"
+        }
+      ],
+      "LAX": [
+        {
+          "code": "LAX-0",
+          "en": "Union Station",
+          "zh": "聯合車站"
+        }
+      ],
+      "SEA": [
+        {
+          "code": "SEA-0",
+          "en": "King Street Station",
+          "zh": "國王街車站"
+        }
+      ],
+      "CHI": [
+        {
+          "code": "CHI-0",
+          "en": "Chicago Union Station",
+          "zh": "芝加哥聯合車站"
+        }
+      ]
+    },
+    "FR": {
+      "PAR": [
+        {
+          "code": "PAR-0",
+          "en": "Gare de l'Est",
+          "zh": "東站"
+        },
+        {
+          "code": "PAR-1",
+          "en": "Gare du Nord",
+          "zh": "北站"
+        },
+        {
+          "code": "PAR-2",
+          "en": "Gare Saint-Lazare",
+          "zh": "聖拉扎爾站"
+        },
+        {
+          "code": "PAR-3",
+          "en": "Gare d'Austerlitz",
+          "zh": "奧斯特利茨站"
+        }
+      ],
+      "LYS": [
+        {
+          "code": "LYS-0",
+          "en": "Lyon Perrache",
+          "zh": "里昂佩拉許站"
+        }
+      ],
+      "MRS": [
+        {
+          "code": "MRS-0",
+          "en": "Marseille Saint-Charles",
+          "zh": "馬賽聖夏勒"
+        }
+      ],
+      "NCE": [
+        {
+          "code": "NCE-0",
+          "en": "Nice-Ville",
+          "zh": "尼斯市站"
+        }
+      ]
+    },
+    "IT": {
+      "ROM": [
+        {
+          "code": "ROM-0",
+          "en": "Roma Termini",
+          "zh": "羅馬特米尼"
+        },
+        {
+          "code": "ROM-1",
+          "en": "Roma Tiburtina",
+          "zh": "羅馬提布提那"
+        }
+      ],
+      "MIL": [
+        {
+          "code": "MIL-0",
+          "en": "Milano Centrale",
+          "zh": "米蘭中央"
+        },
+        {
+          "code": "MIL-1",
+          "en": "Milano Cadorna",
+          "zh": "米蘭卡多納"
+        }
+      ],
+      "VCE": [
+        {
+          "code": "VCE-0",
+          "en": "Venezia Mestre",
+          "zh": "威尼斯梅斯特雷"
+        },
+        {
+          "code": "VCE-1",
+          "en": "Venezia S. Lucia",
+          "zh": "威尼斯聖露西亞"
+        }
+      ],
+      "FLR": [
+        {
+          "code": "FLR-0",
+          "en": "Firenze SMN",
+          "zh": "佛羅倫斯 SMN"
+        },
+        {
+          "code": "FLR-1",
+          "en": "Firenze Campo di Marte",
+          "zh": "佛羅倫斯馬爾特廣場"
+        }
+      ]
+    },
+    "AU": {
+      "SYD": [
+        {
+          "code": "SYD-0",
+          "en": "Central",
+          "zh": "中央車站"
+        },
+        {
+          "code": "SYD-1",
+          "en": "Town Hall",
+          "zh": "市政廳站"
+        },
+        {
+          "code": "SYD-2",
+          "en": "Wynyard",
+          "zh": "Wynyard"
+        },
+        {
+          "code": "SYD-3",
+          "en": "Circular Quay",
+          "zh": "環形碼頭"
+        },
+        {
+          "code": "SYD-4",
+          "en": "Redfern",
+          "zh": "Redfern"
+        }
+      ],
+      "MEL": [
+        {
+          "code": "MEL-0",
+          "en": "Southern Cross",
+          "zh": "南十字星"
+        },
+        {
+          "code": "MEL-1",
+          "en": "Flinders Street",
+          "zh": "Flinders Street"
+        },
+        {
+          "code": "MEL-2",
+          "en": "Melbourne Central",
+          "zh": "Melbourne Central"
+        },
+        {
+          "code": "MEL-3",
+          "en": "Parliament",
+          "zh": "Parliament"
+        }
+      ],
+      "BNE": [
+        {
+          "code": "BNE-0",
+          "en": "Central",
+          "zh": "布里斯本中央站"
+        },
+        {
+          "code": "BNE-1",
+          "en": "Roma Street",
+          "zh": "Roma Street"
+        },
+        {
+          "code": "BNE-2",
+          "en": "South Bank",
+          "zh": "South Bank"
+        }
+      ],
+      "PER": [
+        {
+          "code": "PER-0",
+          "en": "Perth",
+          "zh": "伯斯站"
+        },
+        {
+          "code": "PER-1",
+          "en": "Elizabeth Quay",
+          "zh": "Elizabeth Quay"
+        },
+        {
+          "code": "PER-2",
+          "en": "Perth Underground",
+          "zh": "Perth Underground"
+        }
+      ],
+      "ADL": [
+        {
+          "code": "ADL-0",
+          "en": "Adelaide Railway Station",
+          "zh": "阿得雷德火車站"
+        },
+        {
+          "code": "ADL-1",
+          "en": "Adelaide Showground",
+          "zh": "Adelaide Showground"
+        }
+      ],
+      "OOL": [
+        {
+          "code": "OOL-0",
+          "en": "Helensvale",
+          "zh": "Helensvale"
+        },
+        {
+          "code": "OOL-1",
+          "en": "Robina",
+          "zh": "Robina"
+        },
+        {
+          "code": "OOL-2",
+          "en": "Varsity Lakes",
+          "zh": "Varsity Lakes"
+        }
+      ],
+      "CNS": [
+        {
+          "code": "CNS-0",
+          "en": "Cairns Station",
+          "zh": "凱恩斯站"
+        }
+      ]
+    }
+  },
+  "mode_metro": {
+    "TW": {
+      "TPE": [
+        {
+          "code": "TPE-0",
+          "en": "Taipei Main Station",
+          "zh": "台北車站"
+        },
+        {
+          "code": "TPE-1",
+          "en": "Zhongxiao Fuxing",
+          "zh": "忠孝復興"
+        },
+        {
+          "code": "TPE-2",
+          "en": "Ximen",
+          "zh": "西門"
+        },
+        {
+          "code": "TPE-3",
+          "en": "Taipei 101",
+          "zh": "台北 101"
+        }
+      ],
+      "KHH": [
+        {
+          "code": "KHH-0",
+          "en": "Formosa Boulevard",
+          "zh": "美麗島"
+        },
+        {
+          "code": "KHH-1",
+          "en": "Zuoying",
+          "zh": "左營"
+        }
+      ]
+    },
+    "JP": {
+      "TYO": [
+        {
+          "code": "TYO-0",
+          "en": "Shinjuku",
+          "zh": "新宿"
+        },
+        {
+          "code": "TYO-1",
+          "en": "Shibuya",
+          "zh": "澀谷"
+        },
+        {
+          "code": "TYO-2",
+          "en": "Tokyo",
+          "zh": "東京"
+        },
+        {
+          "code": "TYO-3",
+          "en": "Ueno",
+          "zh": "上野"
+        },
+        {
+          "code": "TYO-4",
+          "en": "Ginza",
+          "zh": "銀座"
+        }
+      ],
+      "OSA": [
+        {
+          "code": "OSA-0",
+          "en": "Umeda",
+          "zh": "梅田"
+        },
+        {
+          "code": "OSA-1",
+          "en": "Namba",
+          "zh": "難波"
+        },
+        {
+          "code": "OSA-2",
+          "en": "Shinsaibashi",
+          "zh": "心齋橋"
+        }
+      ],
+      "KYO": [
+        {
+          "code": "KYO-0",
+          "en": "Karasuma Oike",
+          "zh": "烏丸御池"
+        },
+        {
+          "code": "KYO-1",
+          "en": "Kyoto",
+          "zh": "京都"
+        }
+      ],
+      "SPK": [
+        {
+          "code": "SPK-0",
+          "en": "Sapporo",
+          "zh": "札幌"
+        },
+        {
+          "code": "SPK-1",
+          "en": "Odori",
+          "zh": "大通"
+        }
+      ],
+      "FUK": [
+        {
+          "code": "FUK-0",
+          "en": "Hakata",
+          "zh": "博多"
+        },
+        {
+          "code": "FUK-1",
+          "en": "Tenjin",
+          "zh": "天神"
+        }
+      ]
+    },
+    "KR": {
+      "SEL": [
+        {
+          "code": "SEL-0",
+          "en": "Gangnam",
+          "zh": "江南"
+        },
+        {
+          "code": "SEL-1",
+          "en": "Myeongdong",
+          "zh": "明洞"
+        },
+        {
+          "code": "SEL-2",
+          "en": "Seoul Station",
+          "zh": "首爾站"
+        },
+        {
+          "code": "SEL-3",
+          "en": "Hongik Univ.",
+          "zh": "弘大入口"
+        }
+      ],
+      "PUS": [
+        {
+          "code": "PUS-0",
+          "en": "Seomyeon",
+          "zh": "西面"
+        },
+        {
+          "code": "PUS-1",
+          "en": "Busan Station",
+          "zh": "釜山站"
+        }
+      ],
+      "ICN": [
+        {
+          "code": "ICN-0",
+          "en": "Bupyeong",
+          "zh": "富平"
+        }
+      ]
+    },
+    "US": {
+      "NYC": [
+        {
+          "code": "NYC-0",
+          "en": "Times Sq-42 St",
+          "zh": "時代廣場-42街"
+        },
+        {
+          "code": "NYC-1",
+          "en": "Grand Central",
+          "zh": "中央車站"
+        },
+        {
+          "code": "NYC-2",
+          "en": "Union Sq",
+          "zh": "聯合廣場"
+        }
+      ],
+      "SFO": [
+        {
+          "code": "SFO-0",
+          "en": "Powell St",
+          "zh": "Powell St"
+        },
+        {
+          "code": "SFO-1",
+          "en": "Montgomery St",
+          "zh": "Montgomery St"
+        },
+        {
+          "code": "SFO-2",
+          "en": "Embarcadero",
+          "zh": "Embarcadero"
+        }
+      ],
+      "LAX": [
+        {
+          "code": "LAX-0",
+          "en": "Union Station",
+          "zh": "聯合車站"
+        },
+        {
+          "code": "LAX-1",
+          "en": "7th St / Metro Center",
+          "zh": "7街/捷運中心"
+        }
+      ],
+      "CHI": [
+        {
+          "code": "CHI-0",
+          "en": "State/Lake",
+          "zh": "State/Lake"
+        },
+        {
+          "code": "CHI-1",
+          "en": "Clark/Lake",
+          "zh": "Clark/Lake"
+        }
+      ]
+    },
+    "FR": {
+      "PAR": [
+        {
+          "code": "PAR-0",
+          "en": "Châtelet",
+          "zh": "夏特雷"
+        },
+        {
+          "code": "PAR-1",
+          "en": "Gare du Nord",
+          "zh": "巴黎北站"
+        },
+        {
+          "code": "PAR-2",
+          "en": "Saint-Michel",
+          "zh": "聖米歇爾"
+        },
+        {
+          "code": "PAR-3",
+          "en": "Opéra",
+          "zh": "歌劇院"
+        }
+      ],
+      "LYS": [
+        {
+          "code": "LYS-0",
+          "en": "Bellecour",
+          "zh": "美麗廣場"
+        },
+        {
+          "code": "LYS-1",
+          "en": "Part-Dieu",
+          "zh": "里昂市中心"
+        }
+      ],
+      "MRS": [
+        {
+          "code": "MRS-0",
+          "en": "Vieux-Port",
+          "zh": "舊港"
+        },
+        {
+          "code": "MRS-1",
+          "en": "Saint-Charles",
+          "zh": "聖夏勒"
+        }
+      ]
+    },
+    "IT": {
+      "ROM": [
+        {
+          "code": "ROM-0",
+          "en": "Termini",
+          "zh": "特米尼"
+        },
+        {
+          "code": "ROM-1",
+          "en": "Spagna",
+          "zh": "西班牙廣場"
+        },
+        {
+          "code": "ROM-2",
+          "en": "Colosseo",
+          "zh": "競技場"
+        }
+      ],
+      "MIL": [
+        {
+          "code": "MIL-0",
+          "en": "Duomo",
+          "zh": "主教座堂"
+        },
+        {
+          "code": "MIL-1",
+          "en": "Centrale FS",
+          "zh": "中央車站"
+        }
+      ]
+    },
+    "AU": {
+      "SYD": [
+        {
+          "code": "SYD-0",
+          "en": "Chatswood",
+          "zh": "Chatswood"
+        },
+        {
+          "code": "SYD-1",
+          "en": "North Sydney",
+          "zh": "North Sydney"
+        },
+        {
+          "code": "SYD-2",
+          "en": "Barangaroo",
+          "zh": "Barangaroo"
+        },
+        {
+          "code": "SYD-3",
+          "en": "Martin Place",
+          "zh": "Martin Place"
+        },
+        {
+          "code": "SYD-4",
+          "en": "Central",
+          "zh": "中央車站"
+        }
+      ]
+    }
+  },
+  "mode_light_rail": {
+    "TW": {
+      "TPE": [
+        {
+          "code": "TPE-0",
+          "en": "Hongshulin",
+          "zh": "紅樹林"
+        },
+        {
+          "code": "TPE-1",
+          "en": "Tamhai New Town",
+          "zh": "淡海新市鎮"
+        }
+      ],
+      "KHH": [
+        {
+          "code": "KHH-0",
+          "en": "Hamasen",
+          "zh": "哈瑪星"
+        },
+        {
+          "code": "KHH-1",
+          "en": "Pier-2 Art Center",
+          "zh": "駁二大義"
+        },
+        {
+          "code": "KHH-2",
+          "en": "Kaisyuan",
+          "zh": "凱旋"
+        }
+      ]
+    },
+    "JP": {
+      "TYO": [
+        {
+          "code": "TYO-0",
+          "en": "Minowabashi",
+          "zh": "三輪橋"
+        },
+        {
+          "code": "TYO-1",
+          "en": "Otsuka-ekimae",
+          "zh": "大塚站前"
+        }
+      ],
+      "SPK": [
+        {
+          "code": "SPK-0",
+          "en": "Susukino",
+          "zh": "薄野"
+        },
+        {
+          "code": "SPK-1",
+          "en": "Nishi 4-chome",
+          "zh": "西4丁目"
+        }
+      ]
+    },
+    "KR": {
+      "SEL": [
+        {
+          "code": "SEL-0",
+          "en": "Bukhansan Ui",
+          "zh": "北漢山友"
+        },
+        {
+          "code": "SEL-1",
+          "en": "Solbat Park",
+          "zh": "솔밭公園"
+        }
+      ],
+      "PUS": [
+        {
+          "code": "PUS-0",
+          "en": "Sasang",
+          "zh": "沙上"
+        },
+        {
+          "code": "PUS-1",
+          "en": "Daejeo",
+          "zh": "大渚"
+        }
+      ],
+      "ICN": [
+        {
+          "code": "ICN-0",
+          "en": "Geomdan-Oryu",
+          "zh": "黔丹梧柳"
+        },
+        {
+          "code": "ICN-1",
+          "en": "Geyang",
+          "zh": "桂陽"
+        }
+      ]
+    },
+    "US": {
+      "SFO": [
+        {
+          "code": "SFO-0",
+          "en": "Embarcadero",
+          "zh": "Embarcadero"
+        },
+        {
+          "code": "SFO-1",
+          "en": "Powell",
+          "zh": "Powell"
+        },
+        {
+          "code": "SFO-2",
+          "en": "West Portal",
+          "zh": "West Portal"
+        }
+      ],
+      "LAX": [
+        {
+          "code": "LAX-0",
+          "en": "Long Beach",
+          "zh": "長堤"
+        },
+        {
+          "code": "LAX-1",
+          "en": "Santa Monica",
+          "zh": "聖塔莫尼卡"
+        },
+        {
+          "code": "LAX-2",
+          "en": "Downtown LB",
+          "zh": "Downtown LB"
+        }
+      ],
+      "SEA": [
+        {
+          "code": "SEA-0",
+          "en": "Westlake",
+          "zh": "Westlake"
+        },
+        {
+          "code": "SEA-1",
+          "en": "Capitol Hill",
+          "zh": "Capitol Hill"
+        },
+        {
+          "code": "SEA-2",
+          "en": "SeaTac/Airport",
+          "zh": "SeaTac/Airport"
+        }
+      ]
+    },
+    "FR": {
+      "PAR": [
+        {
+          "code": "PAR-0",
+          "en": "Porte de Choisy",
+          "zh": "Porte de Choisy"
+        },
+        {
+          "code": "PAR-1",
+          "en": "Pont de Bezons",
+          "zh": "Pont de Bezons"
+        }
+      ],
+      "LYS": [
+        {
+          "code": "LYS-0",
+          "en": "Part-Dieu Servient",
+          "zh": "Part-Dieu Servient"
+        },
+        {
+          "code": "LYS-1",
+          "en": "Hôtel de Ville",
+          "zh": "市政廳"
+        }
+      ],
+      "MRS": [
+        {
+          "code": "MRS-0",
+          "en": "Castellane",
+          "zh": "Castellane"
+        },
+        {
+          "code": "MRS-1",
+          "en": "Noailles",
+          "zh": "Noailles"
+        }
+      ],
+      "NCE": [
+        {
+          "code": "NCE-0",
+          "en": "Jean Médecin",
+          "zh": "讓·梅德森"
+        },
+        {
+          "code": "NCE-1",
+          "en": "Garibaldi",
+          "zh": "加里波底"
+        }
+      ]
+    },
+    "IT": {
+      "ROM": [
+        {
+          "code": "ROM-0",
+          "en": "Largo Argentina",
+          "zh": "阿根廷廣場"
+        },
+        {
+          "code": "ROM-1",
+          "en": "Trastevere",
+          "zh": "Trastevere"
+        }
+      ],
+      "MIL": [
+        {
+          "code": "MIL-0",
+          "en": "Duomo",
+          "zh": "主教座堂"
+        },
+        {
+          "code": "MIL-1",
+          "en": "Cadorna",
+          "zh": "卡多納"
+        }
+      ],
+      "FLR": [
+        {
+          "code": "FLR-0",
+          "en": "Cascine",
+          "zh": "Cascine"
+        },
+        {
+          "code": "FLR-1",
+          "en": "Aeroporto",
+          "zh": "機場"
+        }
+      ]
+    },
+    "AU": {
+      "SYD": [
+        {
+          "code": "SYD-0",
+          "en": "Central Chalmers St",
+          "zh": "中央車站 Chalmers St"
+        },
+        {
+          "code": "SYD-1",
+          "en": "Circular Quay",
+          "zh": "環形碼頭"
+        },
+        {
+          "code": "SYD-2",
+          "en": "Town Hall",
+          "zh": "市政廳"
+        },
+        {
+          "code": "SYD-3",
+          "en": "Randwick",
+          "zh": "Randwick"
+        },
+        {
+          "code": "SYD-4",
+          "en": "Kingsford",
+          "zh": "Kingsford"
+        }
+      ],
+      "MEL": [
+        {
+          "code": "MEL-0",
+          "en": "Federation Square",
+          "zh": "Federation Square"
+        },
+        {
+          "code": "MEL-1",
+          "en": "Flinders St",
+          "zh": "Flinders St"
+        },
+        {
+          "code": "MEL-2",
+          "en": "Bourke St Mall",
+          "zh": "Bourke St Mall"
+        },
+        {
+          "code": "MEL-3",
+          "en": "St Kilda",
+          "zh": "St Kilda"
+        },
+        {
+          "code": "MEL-4",
+          "en": "Docklands",
+          "zh": "Docklands"
+        }
+      ],
+      "ADL": [
+        {
+          "code": "ADL-0",
+          "en": "Glenelg",
+          "zh": "Glenelg"
+        },
+        {
+          "code": "ADL-1",
+          "en": "Victoria Square",
+          "zh": "維多利亞廣場"
+        },
+        {
+          "code": "ADL-2",
+          "en": "Festival Plaza",
+          "zh": "節慶廣場"
+        },
+        {
+          "code": "ADL-3",
+          "en": "Botanic Gardens",
+          "zh": "植物園"
+        },
+        {
+          "code": "ADL-4",
+          "en": "Entertainment Centre",
+          "zh": "娛樂中心"
+        }
+      ],
+      "OOL": [
+        {
+          "code": "OOL-0",
+          "en": "Surfers Paradise",
+          "zh": "衝浪者天堂"
+        },
+        {
+          "code": "OOL-1",
+          "en": "Broadbeach North",
+          "zh": "Broadbeach North"
+        },
+        {
+          "code": "OOL-2",
+          "en": "Helensvale",
+          "zh": "Helensvale"
+        },
+        {
+          "code": "OOL-3",
+          "en": "Cavill Avenue",
+          "zh": "Cavill Avenue"
+        }
+      ]
+    }
+  },
+  "mode_bus_long": {
+    "TW": {
+      "TPE": [
+        {
+          "code": "TPE-0",
+          "en": "Taipei Bus Station",
+          "zh": "台北轉運站"
+        },
+        {
+          "code": "TPE-1",
+          "en": "Taipei City Hall Bus Station",
+          "zh": "市府轉運站"
+        }
+      ],
+      "TXG": [
+        {
+          "code": "TXG-0",
+          "en": "Taichung Bus Station",
+          "zh": "台中轉運站"
+        }
+      ],
+      "TNN": [
+        {
+          "code": "TNN-0",
+          "en": "Tainan Bus Station",
+          "zh": "台南轉運站"
+        }
+      ],
+      "KHH": [
+        {
+          "code": "KHH-0",
+          "en": "Kaohsiung Bus Station",
+          "zh": "高雄客運站"
+        }
+      ],
+      "HUN": [
+        {
+          "code": "HUN-0",
+          "en": "Hualien Bus Station",
+          "zh": "花蓮客運站"
+        }
+      ]
+    },
+    "JP": {
+      "TYO": [
+        {
+          "code": "TYO-0",
+          "en": "Shinjuku Expressway Bus Terminal",
+          "zh": "新宿高速巴士總站"
+        },
+        {
+          "code": "TYO-1",
+          "en": "Tokyo Station JR Bus",
+          "zh": "東京駅 JR 巴士"
+        }
+      ],
+      "OSA": [
+        {
+          "code": "OSA-0",
+          "en": "Osaka Station JR Bus",
+          "zh": "大阪駅 JR 巴士"
+        }
+      ],
+      "KYO": [
+        {
+          "code": "KYO-0",
+          "en": "Kyoto Station Bus Terminal",
+          "zh": "京都駅巴士總站"
+        }
+      ],
+      "SPK": [
+        {
+          "code": "SPK-0",
+          "en": "Sapporo Bus Terminal",
+          "zh": "札幌巴士總站"
+        }
+      ],
+      "FUK": [
+        {
+          "code": "FUK-0",
+          "en": "Hakata Bus Terminal",
+          "zh": "博多巴士總站"
+        }
+      ]
+    },
+    "KR": {
+      "SEL": [
+        {
+          "code": "SEL-0",
+          "en": "Seoul Express Bus Terminal",
+          "zh": "首爾高速巴士客運站"
+        },
+        {
+          "code": "SEL-1",
+          "en": "Central City Terminal",
+          "zh": "Central City 客運站"
+        }
+      ],
+      "PUS": [
+        {
+          "code": "PUS-0",
+          "en": "Busan Central Bus Terminal",
+          "zh": "釜山中央巴士客運站"
+        }
+      ]
+    },
+    "US": {
+      "NYC": [
+        {
+          "code": "NYC-0",
+          "en": "Port Authority Bus Terminal",
+          "zh": "紐約港務局巴士總站"
+        }
+      ],
+      "LAX": [
+        {
+          "code": "LAX-0",
+          "en": "Union Station Bus",
+          "zh": "聯合車站巴士"
+        }
+      ],
+      "CHI": [
+        {
+          "code": "CHI-0",
+          "en": "Chicago Greyhound Terminal",
+          "zh": "芝加哥灰狗巴士站"
+        }
+      ]
+    },
+    "FR": {
+      "PAR": [
+        {
+          "code": "PAR-0",
+          "en": "Bercy Seine",
+          "zh": "貝爾西塞納河"
+        }
+      ]
+    },
+    "IT": {
+      "ROM": [
+        {
+          "code": "ROM-0",
+          "en": "Tiburtina Bus Station",
+          "zh": "提布提那巴士站"
+        }
+      ],
+      "MIL": [
+        {
+          "code": "MIL-0",
+          "en": "Lampugnano",
+          "zh": "Lampugnano"
+        }
+      ]
+    },
+    "AU": {
+      "SYD": [
+        {
+          "code": "SYD-0",
+          "en": "Sydney Coach Terminal",
+          "zh": "雪梨長途客運站"
+        },
+        {
+          "code": "SYD-1",
+          "en": "Central Station Coaches",
+          "zh": "中央車站客運"
+        }
+      ],
+      "MEL": [
+        {
+          "code": "MEL-0",
+          "en": "Southern Cross Coach Terminal",
+          "zh": "南十字星客運總站"
+        }
+      ],
+      "BNE": [
+        {
+          "code": "BNE-0",
+          "en": "Roma Street Transit Centre",
+          "zh": "Roma Street 轉運中心"
+        }
+      ],
+      "PER": [
+        {
+          "code": "PER-0",
+          "en": "Elizabeth Quay Busport",
+          "zh": "Elizabeth Quay 巴士站"
+        }
+      ],
+      "ADL": [
+        {
+          "code": "ADL-0",
+          "en": "Adelaide Central Bus Station",
+          "zh": "阿得雷德中央巴士站"
+        },
+        {
+          "code": "ADL-1",
+          "en": "Franklin St",
+          "zh": "Franklin St"
+        }
+      ],
+      "OOL": [
+        {
+          "code": "OOL-0",
+          "en": "Surfers Paradise Bus Station",
+          "zh": "衝浪者天堂巴士站"
+        }
+      ],
+      "CNS": [
+        {
+          "code": "CNS-0",
+          "en": "Cairns Central Station",
+          "zh": "凱恩斯中央站"
+        }
+      ]
+    }
+  },
+  "mode_ferry": {
+    "JP": {
+      "TYO": [
+        {
+          "code": "TYO-0",
+          "en": "Takeshiba Pier",
+          "zh": "竹芝棧橋"
+        }
+      ],
+      "OSA": [
+        {
+          "code": "OSA-0",
+          "en": "Osaka Nankō Ferry Terminal",
+          "zh": "大阪南港渡輪碼頭"
+        }
+      ],
+      "FUK": [
+        {
+          "code": "FUK-0",
+          "en": "Hakata Port",
+          "zh": "博多港"
+        }
+      ],
+      "OKA": [
+        {
+          "code": "OKA-0",
+          "en": "Naha Port",
+          "zh": "那霸港"
+        },
+        {
+          "code": "OKA-1",
+          "en": "Tomari Port",
+          "zh": "泊港"
+        }
+      ]
+    },
+    "KR": {
+      "PUS": [
+        {
+          "code": "PUS-0",
+          "en": "Busan International Ferry Terminal",
+          "zh": "釜山國際渡輪碼頭"
+        }
+      ],
+      "CJU": [
+        {
+          "code": "CJU-0",
+          "en": "Jeju Port",
+          "zh": "濟州港"
+        }
+      ]
+    },
+    "US": {
+      "NYC": [
+        {
+          "code": "NYC-0",
+          "en": "Staten Island Ferry",
+          "zh": "史泰登島渡輪"
+        },
+        {
+          "code": "NYC-1",
+          "en": "NYC Ferry — Wall St",
+          "zh": "NYC Ferry — Wall St"
+        }
+      ],
+      "SFO": [
+        {
+          "code": "SFO-0",
+          "en": "Ferry Building",
+          "zh": "渡輪大廈"
+        }
+      ],
+      "SEA": [
+        {
+          "code": "SEA-0",
+          "en": "Colman Dock",
+          "zh": "柯爾曼船塢"
+        }
+      ]
+    },
+    "FR": {
+      "MRS": [
+        {
+          "code": "MRS-0",
+          "en": "Marseille Ferry Terminal",
+          "zh": "馬賽渡輪碼頭"
+        }
+      ],
+      "NCE": [
+        {
+          "code": "NCE-0",
+          "en": "Nice Ferry Terminal",
+          "zh": "尼斯渡輪碼頭"
+        }
+      ]
+    },
+    "IT": {
+      "VCE": [
+        {
+          "code": "VCE-0",
+          "en": "Tronchetto",
+          "zh": "Tronchetto"
+        },
+        {
+          "code": "VCE-1",
+          "en": "Venice Cruise Terminal",
+          "zh": "威尼斯郵輪碼頭"
+        }
+      ],
+      "ROM": [
+        {
+          "code": "ROM-0",
+          "en": "Civitavecchia Port",
+          "zh": "奇維塔韋基亞港"
+        }
+      ]
+    },
+    "AU": {
+      "SYD": [
+        {
+          "code": "SYD-0",
+          "en": "Circular Quay Wharf",
+          "zh": "環形碼頭"
+        },
+        {
+          "code": "SYD-1",
+          "en": "Manly Wharf",
+          "zh": "Manly 碼頭"
+        },
+        {
+          "code": "SYD-2",
+          "en": "Darling Harbour",
+          "zh": "達令港"
+        },
+        {
+          "code": "SYD-3",
+          "en": "Watsons Bay",
+          "zh": "Watsons Bay"
+        }
+      ],
+      "BNE": [
+        {
+          "code": "BNE-0",
+          "en": "South Bank CityCat",
+          "zh": "South Bank CityCat"
+        },
+        {
+          "code": "BNE-1",
+          "en": "North Quay CityCat",
+          "zh": "North Quay CityCat"
+        },
+        {
+          "code": "BNE-2",
+          "en": "Hamilton CityCat",
+          "zh": "Hamilton CityCat"
+        }
+      ]
+    }
+  }
+}

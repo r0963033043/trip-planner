@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from 'react'
 import { I18nContext } from '../lib/i18n.js'
-import { getStrings, getLocations, getHubs, CURRENCIES, CURRENCY_USD } from '../lib/data.js'
+import { getStrings, getCountryItems, getCityItems, validCityValues, getHubs, CURRENCIES, CURRENCY_USD } from '../lib/data.js'
 import { hsrFareFor } from '../lib/hsr.js'
+import { translateHub } from '../lib/hubs.js'
 import Pickers from './Pickers.jsx'
 import CheckSelect from './CheckSelect.jsx'
 import EntrySection from './EntrySection.jsx'
@@ -42,8 +43,7 @@ export default function PlanForm() {
 
   const strings = getStrings(lang)
   const t = key => strings[key] ?? key
-  const locations = getLocations(lang)
-  const hubs = getHubs(lang)
+  const hubs = getHubs()
 
   useEffect(() => {
     document.documentElement.lang = lang
@@ -55,23 +55,19 @@ export default function PlanForm() {
     setTransport(prev => prev.map(e => applyHsrAutofill(e, currency)))
   }, [currency])
 
-  const countryItems = Object.keys(locations).map(c => ({ value: c, label: c }))
-  const cityPool = countries.length ? countries : Object.keys(locations)
-  const cityItems = []
-  cityPool.forEach(c => (locations[c] || []).forEach(city => cityItems.push({ value: `${c}:${city}`, label: city, group: c })))
+  const countryItems = getCountryItems(lang)
+  const cityItems = getCityItems(lang, countries)
 
   function onLang(next) {
-    // Country/city names are language-specific, so previous picks no longer map.
+    // Country/city picks are stored as codes, so they need no remapping. Only
+    // the free-text From/To hub labels are language-specific — translate those.
+    setTransport(prev => prev.map(e => ({ ...e, from: translateHub(e.from, next), to: translateHub(e.to, next) })))
     setLang(next)
-    setCountries([])
-    setCities([])
   }
 
   function onCountries(next) {
     setCountries(next)
-    const pool = next.length ? next : Object.keys(locations)
-    const valid = new Set()
-    pool.forEach(c => (locations[c] || []).forEach(city => valid.add(`${c}:${city}`)))
+    const valid = new Set(validCityValues(next))
     setCities(prev => prev.filter(v => valid.has(v)))
   }
 
@@ -97,11 +93,14 @@ export default function PlanForm() {
 
   function onSubmit(e) {
     e.preventDefault()
+    // Selections are stored as codes; emit human-readable labels in the result.
+    const countryLabel = Object.fromEntries(countryItems.map(i => [i.value, i.label]))
+    const cityLabel = Object.fromEntries(cityItems.map(i => [i.value, i.label]))
     const data = {
       lang,
       currency,
-      countries,
-      cities,
+      countries: countries.map(c => countryLabel[c] || c),
+      cities: cities.map(c => cityLabel[c] || c),
       transport: transport.map((x, i) => ({ no: i + 1, mode: x.mode, from: x.from, to: x.to, fromTime: x.fromTime, toTime: x.toTime, reservation: x.reservation, price: x.price })),
       stay: stay.map((x, i) => ({ no: i + 1, name: x.name, address: x.address, price: x.price })),
       spot: spot.map((x, i) => ({ no: i + 1, name: x.name, price: x.price })),

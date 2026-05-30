@@ -22,6 +22,7 @@
   "from_time": "Depart Time",
   "to_time": "Arrive Time",
   "price": "Price",
+  "rate_as_of": "Rates as of",
   "total": "Total",
   "no": "No.",
   "name": "Name",

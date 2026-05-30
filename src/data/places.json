@@ -1,0 +1,188 @@
+{
+  "TW": {
+    "en": "Taiwan",
+    "zh": "台灣",
+    "cities": {
+      "TPE": {
+        "en": "Taipei",
+        "zh": "台北"
+      },
+      "TYN": {
+        "en": "Taoyuan",
+        "zh": "桃園"
+      },
+      "TXG": {
+        "en": "Taichung",
+        "zh": "台中"
+      },
+      "TNN": {
+        "en": "Tainan",
+        "zh": "台南"
+      },
+      "KHH": {
+        "en": "Kaohsiung",
+        "zh": "高雄"
+      },
+      "HUN": {
+        "en": "Hualien",
+        "zh": "花蓮"
+      }
+    }
+  },
+  "JP": {
+    "en": "Japan",
+    "zh": "日本",
+    "cities": {
+      "TYO": {
+        "en": "Tokyo",
+        "zh": "東京"
+      },
+      "OSA": {
+        "en": "Osaka",
+        "zh": "大阪"
+      },
+      "KYO": {
+        "en": "Kyoto",
+        "zh": "京都"
+      },
+      "SPK": {
+        "en": "Sapporo",
+        "zh": "札幌"
+      },
+      "FUK": {
+        "en": "Fukuoka",
+        "zh": "福岡"
+      },
+      "OKA": {
+        "en": "Okinawa",
+        "zh": "沖繩"
+      }
+    }
+  },
+  "KR": {
+    "en": "Korea",
+    "zh": "韓國",
+    "cities": {
+      "SEL": {
+        "en": "Seoul",
+        "zh": "首爾"
+      },
+      "PUS": {
+        "en": "Busan",
+        "zh": "釜山"
+      },
+      "CJU": {
+        "en": "Jeju",
+        "zh": "濟州"
+      },
+      "ICN": {
+        "en": "Incheon",
+        "zh": "仁川"
+      }
+    }
+  },
+  "US": {
+    "en": "USA",
+    "zh": "美國",
+    "cities": {
+      "NYC": {
+        "en": "New York",
+        "zh": "紐約"
+      },
+      "SFO": {
+        "en": "San Francisco",
+        "zh": "舊金山"
+      },
+      "LAX": {
+        "en": "Los Angeles",
+        "zh": "洛杉磯"
+      },
+      "SEA": {
+        "en": "Seattle",
+        "zh": "西雅圖"
+      },
+      "CHI": {
+        "en": "Chicago",
+        "zh": "芝加哥"
+      }
+    }
+  },
+  "FR": {
+    "en": "France",
+    "zh": "法國",
+    "cities": {
+      "PAR": {
+        "en": "Paris",
+        "zh": "巴黎"
+      },
+      "LYS": {
+        "en": "Lyon",
+        "zh": "里昂"
+      },
+      "MRS": {
+        "en": "Marseille",
+        "zh": "馬賽"
+      },
+      "NCE": {
+        "en": "Nice",
+        "zh": "尼斯"
+      }
+    }
+  },
+  "IT": {
+    "en": "Italy",
+    "zh": "義大利",
+    "cities": {
+      "ROM": {
+        "en": "Rome",
+        "zh": "羅馬"
+      },
+      "MIL": {
+        "en": "Milan",
+        "zh": "米蘭"
+      },
+      "VCE": {
+        "en": "Venice",
+        "zh": "威尼斯"
+      },
+      "FLR": {
+        "en": "Florence",
+        "zh": "佛羅倫斯"
+      }
+    }
+  },
+  "AU": {
+    "en": "Australia",
+    "zh": "澳洲",
+    "cities": {
+      "SYD": {
+        "en": "Sydney",
+        "zh": "雪梨"
+      },
+      "MEL": {
+        "en": "Melbourne",
+        "zh": "墨爾本"
+      },
+      "BNE": {
+        "en": "Brisbane",
+        "zh": "布里斯本"
+      },
+      "PER": {
+        "en": "Perth",
+        "zh": "伯斯"
+      },
+      "ADL": {
+        "en": "Adelaide",
+        "zh": "阿得雷德"
+      },
+      "OOL": {
+        "en": "Gold Coast",
+        "zh": "黃金海岸"
+      },
+      "CNS": {
+        "en": "Cairns",
+        "zh": "凱恩斯"
+      }
+    }
+  }
+}

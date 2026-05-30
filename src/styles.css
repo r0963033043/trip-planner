@@ -185,6 +185,7 @@ button[type="reset"]:hover { background: var(--border); }
 .btn-submit:hover { background: var(--success-hover); }
 .hint { font-size: 0.8rem; color: var(--muted); margin-top: 4px; }
 .hint.error { color: var(--danger); }
+.muted-fine { font-size: 0.72rem; opacity: 0.8; }
 .info-icon {
   position: relative;
   display: inline-block;
