@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from 'react'
 import { I18nContext } from '../lib/i18n.js'
-import { getStrings, getCountryItems, getCityItems, validCityValues, getHubs, CURRENCIES, CURRENCY_USD } from '../lib/data.js'
-import { hsrFareFor } from '../lib/hsr.js'
+import { getStrings, getCountryItems, getCityItems, validCityValues, getHubs, CURRENCIES, CURRENCY_USD, decimalsFor } from '../lib/data.js'
+import { hsrNativeFareFor } from '../lib/hsr.js'
+import { convert } from '../lib/money.js'
 import { translateHub } from '../lib/hubs.js'
 import Pickers from './Pickers.jsx'
 import CheckSelect from './CheckSelect.jsx'
@@ -21,12 +22,15 @@ const makeSpot = () => ({ id: nextId(), name: '', price: '' })
 const DEFAULT_CURRENCY = CURRENCIES.includes(CURRENCY_USD) ? CURRENCY_USD : (CURRENCIES[0] || CURRENCY_USD)
 
 /**
- * Apply the Taiwan HSR fare to a transport leg, or clear a value we previously
- * auto-filled once the leg is no longer a known HSR route in this currency.
+ * Apply the Taiwan HSR fare to a transport leg, converted into the chosen
+ * currency via the bundled exchange rates, or clear a value we previously
+ * auto-filled once the leg is no longer a known HSR route (or the currency has
+ * no exchange rate).
  */
 function applyHsrAutofill(entry, currency) {
-  const fare = entry.mode === 'mode_hsr' ? hsrFareFor(currency, entry.from, entry.to) : null
-  if (fare != null) return { ...entry, price: String(fare), priceAutofilled: true }
+  const native = entry.mode === 'mode_hsr' ? hsrNativeFareFor(entry.from, entry.to) : null
+  const fare = native ? convert(native.fare, native.currency, currency) : null
+  if (fare != null) return { ...entry, price: fare.toFixed(decimalsFor(currency)), priceAutofilled: true }
   if (entry.priceAutofilled) return { ...entry, price: '', priceAutofilled: false }
   return entry
 }
@@ -50,7 +54,7 @@ export default function PlanForm() {
     document.title = t('title')
   }, [lang]) // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Currency change can switch HSR auto-fill on/off (fares are TWD only).
+  // Currency change re-converts the HSR auto-fill into the new currency.
   useEffect(() => {
     setTransport(prev => prev.map(e => applyHsrAutofill(e, currency)))
   }, [currency])

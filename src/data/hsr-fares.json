@@ -1,5 +1,6 @@
 {
   "currency": "TWD",
+  "updated": "2026-05-31",
   "stations": {
     "Nangang": "NAG", "Taipei": "TPE", "Banqiao": "BAQ", "Taoyuan": "TYN",
     "Taichung": "TCG", "Tainan": "TNN", "Zuoying": "ZUY",

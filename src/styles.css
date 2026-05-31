@@ -37,8 +37,8 @@ form {
   gap: 12px;
 }
 .pickers { display: flex; align-items: center; gap: 16px; }
-.lang-picker { display: flex; align-items: center; gap: 6px; font-size: 0.85rem; color: var(--muted); }
-.lang-picker select { width: auto; padding: 4px 8px; }
+.picker-field { display: flex; align-items: center; gap: 6px; font-size: 0.85rem; color: var(--muted); }
+.picker-field select { width: auto; padding: 4px 8px; }
 h1 { margin: 0; }
 h2 {
   margin-top: 28px;

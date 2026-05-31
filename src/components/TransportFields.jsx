@@ -1,5 +1,5 @@
 import { useI18n } from '../lib/i18n.js'
-import { MODE_KEYS, HSR_FARES, EXCHANGE_RATES } from '../lib/data.js'
+import { MODE_KEYS, HSR_FARES } from '../lib/data.js'
 import { hubsFor } from '../lib/hubs.js'
 import { hsrNativeFareFor } from '../lib/hsr.js'
 import { formatMoney, convert } from '../lib/money.js'
@@ -12,21 +12,27 @@ export default function TransportFields({ entry, currency, hubs, cities, countri
   const options = hubsFor(hubs, entry.mode, cities, countries, lang)
 
   /**
-   * When the chosen currency differs from the fare currency the price can't be
-   * auto-filled, so surface the native HSR fare and its converted equivalent.
+   * For a known HSR route, surface when the fare data was last updated. When the
+   * chosen currency differs from the fare currency the price can't be auto-filled,
+   * so also show the native HSR fare and its converted equivalent.
    */
-  const nativeFare = entry.mode === 'mode_hsr' && currency !== HSR_FARES.currency
+  const nativeFare = entry.mode === 'mode_hsr'
     ? hsrNativeFareFor(entry.from, entry.to)
     : null
   let priceHint = null
   if (nativeFare) {
-    const converted = convert(nativeFare.fare, nativeFare.currency, currency)
+    const differs = currency !== HSR_FARES.currency
+    const converted = differs ? convert(nativeFare.fare, nativeFare.currency, currency) : null
     priceHint = (
       <>
-        {formatMoney(nativeFare.fare, nativeFare.currency, lang)}
-        {converted != null && ` ≈ ${formatMoney(converted, currency, lang)}`}
-        <br />
-        <span className="muted-fine">{t('rate_as_of')} {EXCHANGE_RATES.updated}</span>
+        {differs && (
+          <>
+            {formatMoney(nativeFare.fare, nativeFare.currency, lang)}
+            {converted != null && ` ≈ ${formatMoney(converted, currency, lang)}`}
+            <br />
+          </>
+        )}
+        <span className="muted-fine">{t('fare_as_of')} {HSR_FARES.updated}</span>
       </>
     )
   }
