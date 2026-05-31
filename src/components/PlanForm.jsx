@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { I18nContext } from '../lib/i18n.js'
 import { getStrings, getCountryItems, getCityItems, validCityValues, getHubs, CURRENCIES, CURRENCY_USD, decimalsFor } from '../lib/data.js'
 import { hsrNativeFareFor } from '../lib/hsr.js'
-import { convert } from '../lib/money.js'
+import { convertCurrency } from '../lib/money.js'
 import { translateHub } from '../lib/hubs.js'
 import Pickers from './Pickers.jsx'
 import CheckSelect from './CheckSelect.jsx'
@@ -29,7 +29,7 @@ const DEFAULT_CURRENCY = CURRENCIES.includes(CURRENCY_USD) ? CURRENCY_USD : (CUR
  */
 function applyHsrAutofill(entry, currency) {
   const native = entry.mode === 'mode_hsr' ? hsrNativeFareFor(entry.from, entry.to) : null
-  const fare = native ? convert(native.fare, native.currency, currency) : null
+  const fare = native ? convertCurrency(native.fare, native.currency, currency) : null
   if (fare != null) return { ...entry, price: fare.toFixed(decimalsFor(currency)), priceAutofilled: true }
   if (entry.priceAutofilled) return { ...entry, price: '', priceAutofilled: false }
   return entry

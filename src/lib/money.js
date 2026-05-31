@@ -5,7 +5,7 @@ import { decimalsFor, EXCHANGE_RATES } from './data.js'
  * Rates are expressed as units of each currency per 1 unit of the base, so we
  * route through the base. Returns null when either currency has no rate.
  */
-export function convert(amount, from, to) {
+export function convertCurrency(amount, from, to) {
   if (from === to) return amount
   const { rates } = EXCHANGE_RATES
   if (rates[from] == null || rates[to] == null) return null

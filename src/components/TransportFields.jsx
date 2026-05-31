@@ -2,7 +2,7 @@ import { useI18n } from '../lib/i18n.js'
 import { MODE_KEYS, HSR_FARES } from '../lib/data.js'
 import { hubsFor } from '../lib/hubs.js'
 import { hsrNativeFareFor } from '../lib/hsr.js'
-import { formatMoney, convert } from '../lib/money.js'
+import { formatMoney, convertCurrency } from '../lib/money.js'
 import PriceField from './PriceField.jsx'
 
 export default function TransportFields({ entry, currency, hubs, cities, countries, onField }) {
@@ -22,7 +22,7 @@ export default function TransportFields({ entry, currency, hubs, cities, countri
   let priceHint = null
   if (nativeFare) {
     const differs = currency !== HSR_FARES.currency
-    const converted = differs ? convert(nativeFare.fare, nativeFare.currency, currency) : null
+    const converted = differs ? convertCurrency(nativeFare.fare, nativeFare.currency, currency) : null
     priceHint = (
       <>
         {differs && (
